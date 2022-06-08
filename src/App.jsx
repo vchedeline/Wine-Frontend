@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 
 
 function App() {
-  const [wineList, setWineList] = useState("")
+  const [wineList, setWineList] = useState([])
 
   const URL = `https://wine-app-group.herokuapp.com/`
 
