@@ -18,11 +18,11 @@ body{
 }
 
 main{
-  margin: 0 auto;
-  width: 80%;
+  margin: 10px;
+  /* width: 80%; */
   height: 100vh;
   display: grid;
-  grid-template-columns: auto 80%;
+  grid-template-columns: 15% auto;
   grid-template-rows: auto auto;
   grid-template-areas: 
     "panel display"
