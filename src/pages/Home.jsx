@@ -7,7 +7,7 @@ export default function Home ({ wineList }) {
 
     return(
         <main>
-            <Panel/>
+            <Panel wineList={wineList}/>
             <MainDisplay wineList={wineList}/>
         </main> 
     )

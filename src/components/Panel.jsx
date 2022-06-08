@@ -1,18 +1,45 @@
+
 export default function Panel ({ wineList }) {
-  const loaded = () => {
-    return wineList.map((wine, index) => {
-      return (
-        <div key={index}>
-          name={wine.name}
-          image={wine.image}
-        </div>
-      )
+  const whites =  
+    wineList.filter(wine => {
+      return wine.type === 'Château Pichon Longueville Lalande'
     })
+  
+  const reds = 
+    wineList.filter(wine => {
+      return wine.type === 'Château Pichon Longueville Lalande'
+    })
+  
+
+  const loaded = () => {
+    return (
+      <>
+        <div>
+          <h1>Whites</h1>
+            {whites.map((w, idx) => {
+                return(
+                    <div key={idx}>
+                        {w.name}
+                    </div>
+                )
+            })}
+        </div>
+
+        <div>
+          <h1>Reds</h1>
+          {reds.map((r, idx) => {
+              return(
+                  <div key={idx}>
+                      {r.name}
+                  </div>
+              )
+          })}
+        </div>
+      </>
+    )
   }
 
   const loading = () => <h1>Loading...</h1>
 
-  return (
-    <section className='Panel'>{wineList ? loaded() : loading()}</section>
-  )
+  return <section className='Panel'>{wineList ? loaded() : loading()}</section>
 }

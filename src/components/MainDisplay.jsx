@@ -6,12 +6,12 @@ export default function MainDisplay({ wineList }) {
         return wineList.map((wine, index) => {
             return(
                 <div key={index}>
-                    name={wine.name}
-                    type={wine.type}
-                    year={wine.year}
-                    price={wine.price}
-                    details={wine.details}
-                    image={wine.image}
+                    {wine.name}
+                    {wine.type}
+                    {wine.year}
+                    {wine.price}
+                    {wine.details}
+                    {wine.image}
                 </div>
             )
         })
