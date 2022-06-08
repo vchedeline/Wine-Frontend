@@ -9,13 +9,26 @@ import Footer from './components/Footer';
 
 
 function App() {
-  
+  const [wineList, setWineList] = useState("")
+
+  const URL = `https://wine-app-group.herokuapp.com/`
+
+
+  const getWines = async () => {
+    const data = await fetch(URL + "vineyard").then((response) => response.json())
+    setWineList(data)
+  }
+
+  useEffect(() => {
+    getWines()
+  }, [])
+
   return (
     <div className="App">
       <Header/>
       <Nav/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Home wineList={wineList}/>} />
         <Route path="/addwine" element={<AddWine/>}/>
       </Routes>
       <Footer/>
