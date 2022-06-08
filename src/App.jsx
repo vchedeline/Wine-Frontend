@@ -1,16 +1,25 @@
 import './App.css';
 import {useState, useEffect} from 'react';
+import Nav from './components/Nav';
+import Home from './pages/Home';
+import AddWine from './pages/AddWine';
+import { Routes, Route } from 'react-router';
 import Header from './components/Header';
-import Home from './components/pages/Home';
-import NewWine from './components/pages/NewWine';
+import Footer from './components/Footer';
+
 
 function App() {
   
   return (
     <div className="App">
       <Header/>
-      <Home/>
-      <NewWine/>
+      <Nav/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/addwine" element={<AddWine/>}/>
+      </Routes>
+      <Footer/>
+      
     </div>
   );
 }
