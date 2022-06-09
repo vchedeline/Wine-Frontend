@@ -9,6 +9,8 @@ import "./App.css";
 function App() {
   const [wineList, setWineList] = useState([]);
   const [wine, setWine] = useState(null);
+  const [filteredList, setFilteredList] = useState(null)
+
   // let wine;
 
   const URL = "https://wine-app-group.herokuapp.com/";
@@ -28,8 +30,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Panel wineList={wineList} setWine={setWine} />
-      <MainDisplay wineList={wineList} wine={wine} />
+      <Panel wineList={wineList} setWine={setWine} setFilteredList={setFilteredList} />
+      <MainDisplay wineList={wineList} wine={wine} filteredList={filteredList} setFilteredList={setFilteredList} setWine={setWine}/>
       <Footer />
     </div>
   );
