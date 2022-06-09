@@ -1,54 +1,14 @@
-import Panel from "./Panel";
-
-export default function MainDisplay({
-  wineList,
-  setFilteredReds,
-  setFilteredWhites,
-  filteredWhites,
-  filteredReds,
-  mainDisplay,
-  setMainDisplay,
-}) {
+export default function MainDisplay({ wineList, wine }) {
   const loaded = () => {
-    if (mainDisplay === "Red") {
-      return filteredReds.map((wine, index) => {
-        return (
-          <div key={index}>
-            {wine.name}
-            {wine.type}
-            {wine.year}
-            {wine.price}
-            {wine.details}
-            {wine.image}
-          </div>
-        );
-      });
+    if (wine) {
+      return <div>{wine.name}</div>;
     }
-    return wineList.map((wine, index) => {
-      return (
-        <div key={index}>
-          {wine.name}
-          {wine.type}
-          {wine.year}
-          {wine.price}
-          {wine.details}
-          {wine.image}
-        </div>
-      );
+    return wineList.map((ele, idx) => {
+      return <div key={idx}>{ele.name}</div>;
     });
   };
 
-  const loading = () => <h1>Loading...</h1>;
-
   return (
-    <section className="Main-Disp">
-      <Panel
-        wineList={wineList}
-        setFilteredReds={setFilteredReds}
-        setFilteredWhites={setFilteredWhites}
-        setMainDisplay={setMainDisplay}
-      />
-      {wineList ? loaded() : loading()}
-    </section>
+    <div className="Main-Disp">{wineList ? loaded() : <h1>Loading...</h1>}</div>
   );
 }
