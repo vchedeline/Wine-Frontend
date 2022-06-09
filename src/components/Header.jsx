@@ -1,8 +1,8 @@
-
-
+import Nav from "./Nav";
 export default function Header() {
-    return(
-        <div className="Header">
-        </div>
-    )
+  return (
+    <div className="Header">
+      <Nav />
+    </div>
+  );
 }

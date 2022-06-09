@@ -1,12 +1,16 @@
+import Panel from "./Panel";
 
-export default function MainDisplay ({
+export default function MainDisplay({
   wineList,
+  setFilteredReds,
+  setFilteredWhites,
   filteredWhites,
   filteredReds,
-  mainDisplay
+  mainDisplay,
+  setMainDisplay,
 }) {
   const loaded = () => {
-    if (mainDisplay === 'Red') {
+    if (mainDisplay === "Red") {
       return filteredReds.map((wine, index) => {
         return (
           <div key={index}>
@@ -17,8 +21,8 @@ export default function MainDisplay ({
             {wine.details}
             {wine.image}
           </div>
-        )
-      })
+        );
+      });
     }
     return wineList.map((wine, index) => {
       return (
@@ -30,13 +34,21 @@ export default function MainDisplay ({
           {wine.details}
           {wine.image}
         </div>
-      )
-    })
-  }
+      );
+    });
+  };
 
-  const loading = () => <h1>Loading...</h1>
+  const loading = () => <h1>Loading...</h1>;
 
   return (
-    <section className='Main-Disp'>{wineList ? loaded() : loading()}</section>
-  )
+    <section className="Main-Disp">
+      <Panel
+        wineList={wineList}
+        setFilteredReds={setFilteredReds}
+        setFilteredWhites={setFilteredWhites}
+        setMainDisplay={setMainDisplay}
+      />
+      {wineList ? loaded() : loading()}
+    </section>
+  );
 }
