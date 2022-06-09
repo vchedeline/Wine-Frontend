@@ -1,63 +1,96 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import AddWine from "./pages/AddWine";
-import { Routes, Route } from "react-router";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import MainDisplay from "./components/MainDisplay";
+import './App.css'
+import { useState, useEffect } from 'react'
+import Nav from './components/Nav'
+import Home from './pages/Home'
+import AddWine from './pages/AddWine'
+import { Routes, Route } from 'react-router'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Reds from './pages/Reds'
+import Whites from './pages/Whites'
+import MainDisplay from './components/MainDisplay'
 
-function App() {
-  const [wineList, setWineList] = useState([]);
-  const [filteredWhites, setFilteredWhites] = useState([]);
-  const [filteredReds, setFilteredReds] = useState([]);
+function App () {
+  const [wineList, setWineList] = useState([])
+  const [filteredWhites, setFilteredWhites] = useState([])
+  const [filteredReds, setFilteredReds] = useState([])
+  const [mainDisplay, setMainDisplay] = useState("")
 
-  const URL = `https://wine-app-group.herokuapp.com/`;
-
-  const getWines = async () => {
-    const data = await fetch(URL + "vineyard").then((response) =>
-      response.json(),
-    );
-    setWineList(data);
-  };
+  const URL = `https://wine-app-group.herokuapp.com/`
 
   useEffect(() => {
-    getWines();
-  }, []);
+    const getWines = async () => {
+      const data = await fetch(URL + 'vineyard').then(response =>
+        response.json()
+      )
+      setWineList(data)
+    }
+    getWines()
+  }, [])
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Nav />
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <Home
               wineList={wineList}
               setFilteredReds={setFilteredReds}
               setFilteredWhites={setFilteredWhites}
+              filteredReds={filteredReds}
+              filteredWhites={filteredWhites}
+              setMainDisplay={setMainDisplay}
+            />
+          }
+        />
+
+        {/* <Route
+          path='/wines'
+          element={
+            <Home
+              wineList={wineList}
+              setFilteredReds={setFilteredReds}
+              setFilteredWhites={setFilteredWhites}
+              filteredReds={filteredReds}
+              filteredWhites={filteredWhites}
+              setMainDisplay={setMainDisplay}
+            />
+          }
+        /> */}
+        {/* <Route
+          path='/reds'
+          element={
+            <MainDisplay
+              wineList={wineList}
+              setFilteredReds={setFilteredReds}
+              setFilteredWhites={setFilteredWhites}
+              filteredReds={filteredReds}
+              filteredWhites={filteredWhites}
+              setMainDisplay={setMainDisplay}
             />
           }
         />
         <Route
-          path="/wines/reds"
+          path='/whites'
           element={
-            <MainDisplay wineList={wineList} filteredReds={filteredReds} />
+            <MainDisplay
+              wineList={wineList}
+              setFilteredReds={setFilteredReds}
+              setFilteredWhites={setFilteredWhites}
+              filteredReds={filteredReds}
+              filteredWhites={filteredWhites}
+              setMainDisplay={setMainDisplay}
+            />
           }
-        />
-        <Route
-          path="/wines/whites"
-          element={
-            <MainDisplay wineList={wineList} filteredWhites={filteredWhites} />
-          }
-        />
-        <Route path="/addwine" element={<AddWine />} />
+        /> */}
+        {/* <Route path='/addwine' element={<AddWine />} /> */}
       </Routes>
       <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

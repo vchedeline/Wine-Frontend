@@ -1,14 +1,12 @@
 import MainDisplay from '../components/MainDisplay'
 import Panel from '../components/Panel'
 
-export default function Home ({
+export default function Reds ({
   wineList,
   setFilteredReds,
   setFilteredWhites,
   filteredReds,
-  filteredWhites,
-  setMainDisplay,
-  mainDisplay
+  filteredWhites
 }) {
   return (
     <main>
@@ -16,7 +14,6 @@ export default function Home ({
         wineList={wineList}
         setFilteredReds={setFilteredReds}
         setFilteredWhites={setFilteredWhites}
-        setMainDisplay={setMainDisplay}
       />
       <MainDisplay
         wineList={wineList}
