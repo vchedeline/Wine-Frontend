@@ -1,47 +1,43 @@
-import { Link } from "react-router-dom";
-
-export default function Panel({
-  wineList,
-  setFilteredReds,
-  setFilteredWhites,
-}) {
-  const whites = wineList.filter((wine) => {
-    return wine.type === "White";
-  });
-
-  const reds = wineList.filter((wine) => {
-    return wine.type === "Red";
-  });
-
-  setFilteredReds(reds);
-
-  setFilteredWhites(whites);
+export default function Panel({ wineList, setWine }) {
+  const handleClick = (ele) => {
+    setWine(ele);
+    console.log("Clicked" + ele);
+  };
 
   const loaded = () => {
+    const whites = wineList.filter((wine) => {
+      return wine.type === "White";
+    });
+    const reds = wineList.filter((wine) => {
+      return wine.type === "Red";
+    });
     return (
       <>
         <div>
-          <h1>
-            <Link to={"/wines/whites"}> Whites </Link>
-          </h1>
+          <h1>White</h1>
           {whites.map((w, idx) => {
-            return <div key={idx}>{w.name}</div>;
+            return (
+              <div key={idx} onClick={() => handleClick(w)}>
+                {w.name}
+              </div>
+            );
           })}
         </div>
-
         <div>
-          <h1>
-            <Link to={"/wines/reds"}>Reds</Link>
-          </h1>
+          <h1>Reds</h1>
           {reds.map((r, idx) => {
-            return <div key={idx}>{r.name}</div>;
+            return (
+              <div key={idx} onClick={() => handleClick(r)}>
+                {r.name}
+              </div>
+            );
           })}
         </div>
       </>
     );
   };
 
-  const loading = () => <h1>Loading...</h1>;
-
-  return <section className="Panel">{wineList ? loaded() : loading()}</section>;
+  return (
+    <div className="Panel">{wineList ? loaded() : <h1>Loading...</h1>}</div>
+  );
 }

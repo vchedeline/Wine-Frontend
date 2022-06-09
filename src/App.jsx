@@ -1,60 +1,35 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import AddWine from "./pages/AddWine";
-import { Routes, Route } from "react-router";
+import { useEffect } from "react";
+import { useState } from "react";
+import Panel from "./components/Panel";
+import MainDisplay from "./components/MainDisplay";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import MainDisplay from "./components/MainDisplay";
+import "./App.css";
 
 function App() {
   const [wineList, setWineList] = useState([]);
-  const [filteredWhites, setFilteredWhites] = useState([]);
-  const [filteredReds, setFilteredReds] = useState([]);
+  const [wine, setWine] = useState(null);
+  // let wine;
 
-  const URL = `https://wine-app-group.herokuapp.com/`;
+  const URL = "https://wine-app-group.herokuapp.com/";
+  // const getWineName = (name) => {
+  //   wine = wineList.filter((e) => e === name);
+  // };
 
-  const getWines = async () => {
-    const data = await fetch(URL + "vineyard").then((response) =>
-      response.json(),
-    );
-    setWineList(data);
+  const getWine = async () => {
+    const response = await fetch(URL + "vineyard").then((res) => res.json());
+    setWineList(response);
   };
 
   useEffect(() => {
-    getWines();
+    getWine();
   }, []);
 
   return (
     <div className="App">
       <Header />
-      <Nav />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              wineList={wineList}
-              setFilteredReds={setFilteredReds}
-              setFilteredWhites={setFilteredWhites}
-            />
-          }
-        />
-        <Route
-          path="/wines/reds"
-          element={
-            <MainDisplay wineList={wineList} filteredReds={filteredReds} />
-          }
-        />
-        <Route
-          path="/wines/whites"
-          element={
-            <MainDisplay wineList={wineList} filteredWhites={filteredWhites} />
-          }
-        />
-        <Route path="/addwine" element={<AddWine />} />
-      </Routes>
+      <Panel wineList={wineList} setWine={setWine} />
+      <MainDisplay wineList={wineList} wine={wine} />
       <Footer />
     </div>
   );

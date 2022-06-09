@@ -1,15 +1,7 @@
-import MainDisplay from "../components/MainDisplay";
-import Panel from "../components/Panel";
-
-export default function Home({ wineList, setFilteredReds, setFilteredWhites }) {
+export default function Home() {
   return (
     <main>
-      <Panel
-        wineList={wineList}
-        setFilteredReds={setFilteredReds}
-        setFilteredWhites={setFilteredWhites}
-      />
-      <MainDisplay wineList={wineList} />
+      <h1>HOME</h1>
     </main>
   );
 }
