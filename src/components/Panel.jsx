@@ -1,8 +1,14 @@
-export default function Panel({ wineList, setWine }) {
+export default function Panel({ wineList, setWine, setFilteredList }) {
   const handleClick = (ele) => {
     setWine(ele);
     console.log("Clicked" + ele);
+    setFilteredList(null)
   };
+
+  const handleFilter = (list) => {
+    setFilteredList(list)
+    setWine(null)
+  }
 
   const loaded = () => {
     const whites = wineList.filter((wine) => {
@@ -14,7 +20,7 @@ export default function Panel({ wineList, setWine }) {
     return (
       <>
         <div>
-          <h1>White</h1>
+          <h1 onClick={() => handleFilter(whites)}>White</h1>
           {whites.map((w, idx) => {
             return (
               <div key={idx} onClick={() => handleClick(w)}>
@@ -24,7 +30,7 @@ export default function Panel({ wineList, setWine }) {
           })}
         </div>
         <div>
-          <h1>Reds</h1>
+          <h1 onClick={() => handleFilter(reds)}>Reds</h1>
           {reds.map((r, idx) => {
             return (
               <div key={idx} onClick={() => handleClick(r)}>
