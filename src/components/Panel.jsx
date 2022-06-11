@@ -1,6 +1,24 @@
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function Panel({ wineList, setWine, setFilteredList }) {
+
+  const PanelDiv = styled.div`
+  background-color: RGBA(126, 15, 16,.5);
+  color: white;
+  font-size:16pt;
+  border-radius:10px;
+  width: 80%;
+  align-items: center;
+  padding: 50px;
+&:hover,
+  &:focus {
+    color: palevioletred;
+  }
+  &:active {
+    color: white;
+`
+
   const handleClick = (ele) => {
     setWine(ele);
  
@@ -22,6 +40,7 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
       return wine.type === "Red";
     });
     return (
+  
       <>
         <Link to="/wine">
           <h1>Add New Wine</h1>
@@ -30,27 +49,33 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
           <h1 onClick={() => handleFilter(whites)}>White</h1>
           {whites.map((w, idx) => {
             return (
-              <div key={idx} onClick={() => handleClick(w)}>
+              <div className="whites" key={idx} onClick={() => handleClick(w)}>
                 {w.name}
               </div>
+             
             );
           })}
-        </div>
-        <div>
           <h1 onClick={() => handleFilter(reds)}>Reds</h1>
           {reds.map((r, idx) => {
             return (
+             
               <div key={idx} onClick={() => handleClick(r)}>
+                <FontAwesomeIcon icon="fa-solid fa-wine-glass" />
                 {r.name}
               </div>
+              
+           
             );
           })}
-        </div>
+       
       </>
+      
     );
   };
 
   return (
+    <PanelDiv>
     <div className="Panel">{wineList ? loaded() : <h1>Loading...</h1>}</div>
+    </PanelDiv>
   );
 }

@@ -1,16 +1,23 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate} from 'react-router-dom'
 
-//Styling
-const StyledDiv = styled.div`
-  background-color: #adb5bd;
-  border: 5px solid black;
-  border-radius: 3%;
-  width: 50%;
+export default function Panel({ wineList, setWine, setFilteredList }) {
+
+  const PanelDiv = styled.div`
+  background-color: RGBA(126, 15, 16,.5);
+  color: white;
+  font-size:16pt;
+  border-radius:10px;
+  width: 80%;
   align-items: center;
-  margin: 40px auto;
-  padding: 20px;
+  padding: 50px;
+&:hover,
+  &:focus {
+    color: palevioletred;
+  }
+  &:active {
+    color: white;
 `
 
 export default function MainDisplay ({
@@ -155,11 +162,10 @@ export default function MainDisplay ({
     })
   }
 
-  return (
-    <div className='Main-Disp'>{wineList ? loaded() : <h1>Loading...</h1>}</div>
-  )
-
+ return (
+    <PanelDiv>
+    <div className="Panel">{wineList ? loaded() : <h1>Loading...</h1>}</div>
+    </PanelDiv>
+  );
 }
-
-
 
