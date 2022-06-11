@@ -66,6 +66,8 @@ const updateWine = async (wine, id) => {
               wine={wine}
               setWine={setWine}
               setFilteredList={setFilteredList}
+              filteredList={filteredList}
+              updateWine={updateWine}
             />
           }
         />

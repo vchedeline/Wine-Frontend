@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { useParams, useNavigate } from 'react-router-dom'
-
 //Styling
 const StyledDiv = styled.div`
   background-color: #adb5bd;
@@ -46,10 +44,7 @@ export default function MainDisplay ({
     navigate('/')
   }
 
-  setFilteredList
-}) {
   const { id } = useParams()
-  let navigate = useNavigate()
   const wineId = wineList.find((w) => w._id === id)
 
 
@@ -121,9 +116,6 @@ export default function MainDisplay ({
           >
             Edit
           </button>
-
-          <button>Edit</button>
-
           <button>Delete</button>
         </StyledDiv>
       )
@@ -134,10 +126,6 @@ export default function MainDisplay ({
           <StyledDiv>
             <div key={idx}>{ele.name}</div>
 
-
-            <button>Edit</button>
-            <button>Delete</button>
-
           </StyledDiv>
         )
       })
@@ -147,9 +135,6 @@ export default function MainDisplay ({
         <StyledDiv>
           <div key={idx}>{ele.name}</div>
 
-
-          <button>Edit</button>
-          <button>Delete</button>
 
         </StyledDiv>
       )
@@ -172,5 +157,5 @@ export default function MainDisplay ({
 
 }
 
-}
+
 
