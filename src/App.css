@@ -54,13 +54,14 @@ nav{
   display: inline;
   
 }
-.img{
-  height: 40vh;
-  margin-bottom: 70px;
-}
 
-p{
+.Footer p{
   width: fit-content;
   display: flex;
   display: inline;
+}
+
+.img{
+  height: 40vh;
+  margin-bottom: 70px;
 }
