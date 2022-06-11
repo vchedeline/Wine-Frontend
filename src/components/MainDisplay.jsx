@@ -27,8 +27,6 @@ export default function MainDisplay ({
   const wineId = wineList.find((w) => w._id === id)
 
   const handleDelete = async () =>{
-    console.log("Clicked Delete")
-    //get wine id
     if(wine){
       const id = wine._id;
       await fetch(URL + "wine/" + id,{
@@ -38,7 +36,10 @@ export default function MainDisplay ({
         }
       }).catch(err =>console.log(err));
 
+      //make api call and set wineLest
       getWine();
+      
+      //reset wine
       setWine(null);   
     };    
     
