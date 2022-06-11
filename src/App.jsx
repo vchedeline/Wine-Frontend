@@ -19,7 +19,6 @@ function App() {
   
   };
 
-
 const updateWine = async (wine, id) => {
   await fetch(URL + 'wine/' + wine._id, {
     method: 'PUT',
@@ -31,8 +30,7 @@ const updateWine = async (wine, id) => {
   getWine()
 }
 
-
-  const addWine = async (newWine) => {
+const addWine = async (newWine) => {
     await fetch(URL + "wine/", {
       method: "POST",
       headers: {
@@ -42,7 +40,6 @@ const updateWine = async (wine, id) => {
     });
     getWine();
   };
-
 
   useEffect(() => {
     getWine();

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate} from 'react-router-dom'
 
 //Styling
 const StyledDiv = styled.div`
@@ -14,18 +14,18 @@ const StyledDiv = styled.div`
 `
 
 export default function MainDisplay ({
+  getWine,
   wineList,
   wine,
   filteredList,
   setWine,
   setFilteredList,
+  URL,
   updateWine
 }) {
   let navigate = useNavigate()
   const [editForm, setEditForm] = useState(false)
-
-
-
+  const { id } = useParams()
 
   // function for form
   const handleChange = event => {
@@ -44,9 +44,24 @@ export default function MainDisplay ({
     navigate('/')
   }
 
-  const { id } = useParams()
-  const wineId = wineList.find((w) => w._id === id)
+  const handleDelete = async () =>{
+    if(wine){
+      const id = wine._id;
+      await fetch(URL + "wine/" + id,{
+        method: "DELETE",
+        headers: {
+          "Content-Type": "Application/json",
+        }
+      }).catch(err =>console.log(err));
 
+      //make api call and set wineLest
+      getWine();
+      
+      //reset wine
+      setWine(null);   
+    };    
+    
+  }
 
 
   const loaded = () => {
@@ -108,7 +123,6 @@ export default function MainDisplay ({
       return (
         <StyledDiv>
           <div>{wine.name}</div>
-
           <button
             onClick={() => {
               setEditForm(wine)
@@ -117,6 +131,8 @@ export default function MainDisplay ({
             Edit
           </button>
           <button>Delete</button>
+          <button onClick={()=> handleDelete()}>Delete</button>
+
         </StyledDiv>
       )
     }
@@ -134,23 +150,11 @@ export default function MainDisplay ({
       return (
         <StyledDiv>
           <div key={idx}>{ele.name}</div>
-
-
         </StyledDiv>
       )
     })
   }
 
-
-
-  const EditWine = ( { id }) => {
-    return(
-      <StyledDiv>
-
-
-      </StyledDiv>
-    )
-  }
   return (
     <div className='Main-Disp'>{wineList ? loaded() : <h1>Loading...</h1>}</div>
   )
