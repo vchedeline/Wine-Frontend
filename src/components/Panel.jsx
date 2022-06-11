@@ -1,4 +1,4 @@
-export default function Panel({ wineList, setWine, setFilteredList }) {
+export default function Panel({ wineList, setWine, setFilteredList}) {
   const handleClick = (ele) => {
     setWine(ele);
     console.log("Clicked" + ele);

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate} from 'react-router-dom'
 
 //Styling
 const StyledDiv = styled.div`
@@ -14,16 +14,35 @@ const StyledDiv = styled.div`
 `
 
 export default function MainDisplay ({
+  getWine,
   wineList,
   wine,
   filteredList,
   setWine,
-  setFilteredList
+  setFilteredList,
+  URL
 }) {
   const { id } = useParams()
   let navigate = useNavigate()
   const wineId = wineList.find((w) => w._id === id)
 
+  const handleDelete = async () =>{
+    console.log("Clicked Delete")
+    //get wine id
+    if(wine){
+      const id = wine._id;
+      await fetch(URL + "wine/" + id,{
+        method: "DELETE",
+        headers: {
+          "Content-Type": "Application/json",
+        }
+      }).catch(err =>console.log(err));
+
+      getWine();
+      setWine(null);   
+    };    
+    
+  }
 
   const loaded = () => {
     if (wine) {
@@ -31,28 +50,24 @@ export default function MainDisplay ({
         <StyledDiv>
           <div>{wine.name}</div>
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={()=> handleDelete()}>Delete</button>
         </StyledDiv>
       )
     }
     if (filteredList) {
       return filteredList.map((ele, idx) => {
-        return (
-          <StyledDiv>
-            <div key={idx}>{ele.name}</div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </StyledDiv>
+        return (         
+            <StyledDiv>
+              <div key={idx}>{ele.name}</div>
+            </StyledDiv>          
         )
       })
     }
     return wineList.map((ele, idx) => {
       return (
-        <StyledDiv>
-          <div key={idx}>{ele.name}</div>
-          <button>Edit</button>
-          <button>Delete</button>
-        </StyledDiv>
+          <StyledDiv>
+            <div key={idx}>{ele.name}</div>
+          </StyledDiv>        
       )
     })
   }
