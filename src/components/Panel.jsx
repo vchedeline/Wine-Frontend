@@ -1,13 +1,18 @@
+import { Link } from "react-router-dom";
+
 export default function Panel({ wineList, setWine, setFilteredList }) {
   const handleClick = (ele) => {
     setWine(ele);
-    setFilteredList(null)
+ 
+    setFilteredList(null);
+
+
   };
 
   const handleFilter = (list) => {
-    setFilteredList(list)
-    setWine(null)
-  }
+    setFilteredList(list);
+    setWine(null);
+  };
 
   const loaded = () => {
     const whites = wineList.filter((wine) => {
@@ -18,6 +23,9 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
     });
     return (
       <>
+        <Link to="/wine">
+          <h1>Add New Wine</h1>
+        </Link>
         <div>
           <h1 onClick={() => handleFilter(whites)}>White</h1>
           {whites.map((w, idx) => {

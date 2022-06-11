@@ -6,20 +6,20 @@ export default function AddWine({ wineList, addWine }) {
   const navigate = useNavigate();
 
   const handleChange = (evt) => {
-    setNewWine({ ...NetworkInformation, [evt.target.name]: evt.target.value });
+    setNewWine({ ...newWine, [evt.target.name]: evt.target.value });
   };
 
   const submitWine = (evt) => {
     evt.preventDefault();
     addWine(newWine);
     setNewWine([]);
-    navigate("/home");
+    navigate("/");
   };
 
   return (
     <div>
       <h1>Enter New Wine</h1>
-      <form method="">
+      <form onSubmit={submitWine}>
         <input
           type="text"
           name="name"
@@ -62,6 +62,7 @@ export default function AddWine({ wineList, addWine }) {
           onChange={handleChange}
           placeholder="image"
         />
+        <button type="submit"> Add New Wine </button>
       </form>
     </div>
   );
