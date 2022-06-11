@@ -1,70 +1,77 @@
-import styled from 'styled-components'
-import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-//Styling
-const StyledDiv = styled.div`
-  background-color: #adb5bd;
-  border: 5px solid black;
-  border-radius: 3%;
-  width: 50%;
+export default function Panel({ wineList, setWine, setFilteredList }) {
+
+  const PanelDiv = styled.div`
+  background-color: RGBA(126, 15, 16,.5);
+  color: white;
+  font-size:16pt;
+  border-radius:10px;
+  width: 80%;
   align-items: center;
-  margin: 40px auto;
-  padding: 20px;
+  padding: 50px;
+&:hover,
+  &:focus {
+    color: palevioletred;
+  }
+  &:active {
+    color: white;
 `
 
-export default function MainDisplay ({
-  wineList,
-  wine,
-  filteredList,
-  setWine,
-  setFilteredList
-}) {
-  const { id } = useParams()
-  let navigate = useNavigate()
-  const wineId = wineList.find((w) => w._id === id)
+  const handleClick = (ele) => {
+    setWine(ele);
+    console.log("Clicked" + ele);
+    setFilteredList(null)
+  };
 
+  const handleFilter = (list) => {
+    setFilteredList(list)
+    setWine(null)
+  }
 
   const loaded = () => {
-    if (wine) {
-      return (
-        <StyledDiv>
-          <div>{wine.name}</div>
-          <button>Edit</button>
-          <button>Delete</button>
-        </StyledDiv>
-      )
-    }
-    if (filteredList) {
-      return filteredList.map((ele, idx) => {
-        return (
-          <StyledDiv>
-            <div key={idx}>{ele.name}</div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </StyledDiv>
-        )
-      })
-    }
-    return wineList.map((ele, idx) => {
-      return (
-        <StyledDiv>
-          <div key={idx}>{ele.name}</div>
-          <button>Edit</button>
-          <button>Delete</button>
-        </StyledDiv>
-      )
-    })
-  }
+    const whites = wineList.filter((wine) => {
+      return wine.type === "White";
+    });
+    const reds = wineList.filter((wine) => {
+      return wine.type === "Red";
+    });
+    return (
+  
+      <>
+          <h1 onClick={() => handleFilter(whites)}>Whites</h1>
+          {whites.map((w, idx) => {
+            return (
+              <div className="whites" key={idx} onClick={() => handleClick(w)}>
+                {w.name}
+              </div>
+             
+            );
+          })}
+        
+       
+          <h1 onClick={() => handleFilter(reds)}>Reds</h1>
+          {reds.map((r, idx) => {
+            return (
+             
+              <div key={idx} onClick={() => handleClick(r)}>
+                <FontAwesomeIcon icon="fa-solid fa-wine-glass" />
+                {r.name}
+              </div>
+              
+              
+            );
+          })}
+       
+      </>
+      
+    );
+  };
 
-  const EditWine = ( { id }) => {
-    return(
-      <StyledDiv>
-
-      </StyledDiv>
-    )
-  }
   return (
-    <div className='Main-Disp'>{wineList ? loaded() : <h1>Loading...</h1>}</div>
-  )
+    <PanelDiv>
+    <div className="Panel">{wineList ? loaded() : <h1>Loading...</h1>}</div>
+    </PanelDiv>
+  );
 }
