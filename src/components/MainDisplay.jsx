@@ -17,7 +17,7 @@ export default function MainDisplay({ wineList, wine, filteredList, setWine, set
       return <div key={idx}>{ele.name}</div>;
     });
   };
-
+  
   return (
     <div className="Main-Disp">{wineList ? loaded() : <h1>Loading...</h1>}</div>
   );
