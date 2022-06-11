@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 import AddWine from "./pages/AddWine";
+import Home from "./pages/Home";
+
 
 function App() {
   const [wineList, setWineList] = useState([]);
@@ -41,20 +43,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-        <Panel
-          wineList={wineList}
-          setWine={setWine}
-          setFilteredList={setFilteredList}
-        />
-        <MainDisplay
-          wineList={wineList}
-          wine={wine}
-          filteredList={filteredList}
-          setFilteredList={setFilteredList}
-          setWine={setWine}
-        />
-      </main>
+      <Home wineList={wineList} wine={wine} setWine={setWine} setFilteredList={setFilteredList}/>
       <Footer />
     </div>
   );
