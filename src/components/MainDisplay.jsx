@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
+//Styling
 const StyledDiv = styled.div`
   background-color: #adb5bd;
   border: 5px solid black;
