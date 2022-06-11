@@ -50,6 +50,7 @@ nav{
 }
 
 .Footer{
+  display: inline;
   display: flex;
   justify-content: center;
   color:white;
@@ -64,16 +65,20 @@ nav{
   width: 100%;
   bottom: 0; */
 }
+
+.Footer p{
+  width: fit-content;
+  display: flex;
+  display: inline;
+}
+
 .img{
   height: 40vh;
   margin-bottom: 70px;
 }
 .link{
-<<<<<<< HEAD
   height: 40px;
   width: 40px;
-=======
   height: 100px;
   width: 100px;
->>>>>>> 8c1d095
 }
