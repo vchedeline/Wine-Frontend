@@ -1,5 +1,5 @@
 *{
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .App {
   text-align: center;
@@ -51,13 +51,16 @@ nav{
 }
 
 .Footer{
-  display: grid;
-  justify-content: center;
-  /* position: absolute;
-  width: 100%;
-  bottom: 0; */
+  display: inline;
+  
 }
 .img{
   height: 40vh;
   margin-bottom: 70px;
+}
+
+p{
+  width: fit-content;
+  display: flex;
+  display: inline;
 }
