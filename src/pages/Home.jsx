@@ -7,7 +7,7 @@ export default function Home(props) {
       <div>
         <main>
           <Panel wineList={props.wineList} setWine={props.setWine} setFilteredList={props.setFilteredList} />
-          <MainDisplay wineList={props.wineList} wine={props.wine} filteredList={props.filteredList} setFilteredList={props.setFilteredList} setWine={props.setWine}/>
+          <MainDisplay URL={props.URL} getWine = {props.getWine} wineList={props.wineList} wine={props.wine} filteredList={props.filteredList} setFilteredList={props.setFilteredList} setWine={props.setWine}/>
         </main>
       </div>
     

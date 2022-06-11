@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function Panel({ wineList, setWine, setFilteredList }) {
 
@@ -21,14 +21,16 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
 
   const handleClick = (ele) => {
     setWine(ele);
-    console.log("Clicked" + ele);
-    setFilteredList(null)
+ 
+    setFilteredList(null);
+
+
   };
 
   const handleFilter = (list) => {
-    setFilteredList(list)
-    setWine(null)
-  }
+    setFilteredList(list);
+    setWine(null);
+  };
 
   const loaded = () => {
     const whites = wineList.filter((wine) => {
@@ -40,7 +42,11 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
     return (
   
       <>
-          <h1 onClick={() => handleFilter(whites)}>Whites</h1>
+        <Link to="/wine">
+          <h1>Add New Wine</h1>
+        </Link>
+        <div>
+          <h1 onClick={() => handleFilter(whites)}>White</h1>
           {whites.map((w, idx) => {
             return (
               <div className="whites" key={idx} onClick={() => handleClick(w)}>
@@ -49,8 +55,6 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
              
             );
           })}
-        
-       
           <h1 onClick={() => handleFilter(reds)}>Reds</h1>
           {reds.map((r, idx) => {
             return (
@@ -60,7 +64,7 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
                 {r.name}
               </div>
               
-              
+           
             );
           })}
        
