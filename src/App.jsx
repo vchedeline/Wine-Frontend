@@ -16,21 +16,20 @@ function App() {
   const getWine = async () => {
     const response = await fetch(URL + "vineyard").then((res) => res.json());
     setWineList(response);
-  
   };
 
-const updateWine = async (wine, id) => {
-  await fetch(URL + 'wine/' + wine._id, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'Application/json'
-    },
-    body: JSON.stringify(wine)
-  })
-  getWine()
-}
+  const updateWine = async (wine, id) => {
+    await fetch(URL + "wine/" + wine._id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(wine),
+    });
+    getWine();
+  };
 
-const addWine = async (newWine) => {
+  const addWine = async (newWine) => {
     await fetch(URL + "wine/", {
       method: "POST",
       headers: {
@@ -41,11 +40,27 @@ const addWine = async (newWine) => {
     getWine();
   };
 
+  const handleDelete = async () => {
+    if (wine) {
+      const id = wine._id;
+      await fetch(URL + "wine/" + id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+      }).catch((err) => console.log(err));
+
+      //make api call and set wineLest
+      getWine();
+
+      //reset wine
+      setWine(null);
+    }
+  };
+
   useEffect(() => {
     getWine();
   }, []);
-
-
 
   return (
     <div className="App">
@@ -65,6 +80,7 @@ const addWine = async (newWine) => {
               setFilteredList={setFilteredList}
               filteredList={filteredList}
               updateWine={updateWine}
+              handleDelete={handleDelete}
             />
           }
         />
