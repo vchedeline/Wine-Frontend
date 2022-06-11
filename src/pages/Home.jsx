@@ -1,7 +1,15 @@
-export default function Home() {
+import Panel from "../components/Panel";
+import MainDisplay from "../components/MainDisplay";
+
+export default function Home(props) {
   return (
-    <main>
-      <h1>HOME</h1>
-    </main>
+   
+      <div>
+        <main>
+          <Panel wineList={props.wineList} setWine={props.setWine} setFilteredList={props.setFilteredList} />
+          <MainDisplay wineList={props.wineList} wine={props.wine} filteredList={props.filteredList} setFilteredList={props.setFilteredList} setWine={props.setWine}/>
+        </main>
+      </div>
+    
   );
 }

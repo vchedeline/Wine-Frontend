@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
+import { useParams, useNavigate } from 'react-router-dom'
+
+//Styling
 const StyledDiv = styled.div`
   background-color: #adb5bd;
   border: 5px solid black;
@@ -42,6 +45,14 @@ export default function MainDisplay ({
     setEditForm(false)
     navigate('/')
   }
+
+  setFilteredList
+}) {
+  const { id } = useParams()
+  let navigate = useNavigate()
+  const wineId = wineList.find((w) => w._id === id)
+
+
 
   const loaded = () => {
     if (editForm) {
@@ -102,6 +113,7 @@ export default function MainDisplay ({
       return (
         <StyledDiv>
           <div>{wine.name}</div>
+
           <button
             onClick={() => {
               setEditForm(wine)
@@ -109,6 +121,9 @@ export default function MainDisplay ({
           >
             Edit
           </button>
+
+          <button>Edit</button>
+
           <button>Delete</button>
         </StyledDiv>
       )
@@ -118,6 +133,11 @@ export default function MainDisplay ({
         return (
           <StyledDiv>
             <div key={idx}>{ele.name}</div>
+
+
+            <button>Edit</button>
+            <button>Delete</button>
+
           </StyledDiv>
         )
       })
@@ -126,12 +146,31 @@ export default function MainDisplay ({
       return (
         <StyledDiv>
           <div key={idx}>{ele.name}</div>
+
+
+          <button>Edit</button>
+          <button>Delete</button>
+
         </StyledDiv>
       )
     })
   }
 
+
+
+  const EditWine = ( { id }) => {
+    return(
+      <StyledDiv>
+
+
+      </StyledDiv>
+    )
+  }
   return (
     <div className='Main-Disp'>{wineList ? loaded() : <h1>Loading...</h1>}</div>
   )
+
 }
+
+}
+
