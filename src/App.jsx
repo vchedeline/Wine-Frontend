@@ -16,7 +16,21 @@ function App() {
   const getWine = async () => {
     const response = await fetch(URL + "vineyard").then((res) => res.json());
     setWineList(response);
+  
   };
+
+
+const updateWine = async (wine, id) => {
+  await fetch(URL + 'wine/' + wine._id, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'Application/json'
+    },
+    body: JSON.stringify(wine)
+  })
+  getWine()
+}
+
 
   const addWine = async (newWine) => {
     await fetch(URL + "wine/", {
@@ -29,9 +43,12 @@ function App() {
     getWine();
   };
 
+
   useEffect(() => {
     getWine();
   }, []);
+
+
 
   return (
     <div className="App">
