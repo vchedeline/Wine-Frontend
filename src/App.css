@@ -1,11 +1,14 @@
 *{
-  border: 2px solid red;
+  /* border: 2px solid red; */
+  font-family: 'Dancing Script', cursive;
+  color: white;
 }
 .App {
   text-align: center;
   
 }
-
+body{
+}
 .home-icon{
   width: 50px;
   height: 5vh;
@@ -47,8 +50,16 @@ nav{
 }
 
 .Footer{
-  display: grid;
+  display: flex;
   justify-content: center;
+  color:white;
+  justify-content: space-between;
+  height: 50px;
+  width:50px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: -50px;
+  padding-top: -50px;
   /* position: absolute;
   width: 100%;
   bottom: 0; */
@@ -58,6 +69,11 @@ nav{
   margin-bottom: 70px;
 }
 .link{
+<<<<<<< HEAD
   height: 40px;
   width: 40px;
+=======
+  height: 100px;
+  width: 100px;
+>>>>>>> 8c1d095
 }
