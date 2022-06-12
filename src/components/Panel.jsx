@@ -1,24 +1,23 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function Panel({ wineList, setWine, setFilteredList }) {
-  const PanelDiv = styled.div`
-    background-color: RGBA(126, 15, 16, 0.5);
+const PanelDiv = styled.div`
+  background-color: RGBA(126, 15, 16, 0.5);
+  color: white;
+  font-size: 16pt;
+  border-radius: 10px;
+  width: 80%;
+  align-items: center;
+  padding: 50px;
+  &:hover,
+  &:focus {
+    color: palevioletred;
+  }
+  &:active {
     color: white;
-    font-size: 16pt;
-    border-radius: 10px;
-    width: 80%;
-    align-items: center;
-    padding: 50px;
-    &:hover,
-    &:focus {
-      color: palevioletred;
-    }
-    &:active {
-      color: white;
-    }
-  `;
-
+  }
+`;
+export default function Panel({ wineList, setWine, setFilteredList }) {
   const handleClick = (ele) => {
     setWine(ele);
     setFilteredList(null);
