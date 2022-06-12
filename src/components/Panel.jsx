@@ -18,7 +18,7 @@ const PanelDiv = styled.div`
   &:active {
     color: white;
   }
-
+  
   h1 {
     display: flex;
     justify-content: space-around;

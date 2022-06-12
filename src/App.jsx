@@ -67,8 +67,15 @@ function App () {
       <Header />
       <Routes>
         <Route
-          path='/wine'
-          element={<AddWine wineList={wineList} addWine={addWine} />}
+          path="/wine"
+          element={
+            <AddWine
+              wineList={wineList}
+              addWine={addWine}
+              setWine={setWine}
+              setFilteredList={setFilteredList}
+            />
+          }
         />
         <Route
           path='/'
