@@ -8,6 +8,8 @@ export default function MainDisplay({
   filteredList,
   updateWine,
   handleDelete,
+  setWine,
+  setFilteredList
 }) {
   const StyledDiv = styled.div`
     background-color: #adb5bd;
@@ -21,6 +23,11 @@ export default function MainDisplay({
 
   let navigate = useNavigate();
   const [editForm, setEditForm] = useState(false);
+
+  const handleClick = (ele) => {
+    setWine(ele);
+    setFilteredList(null);
+  };
 
   // function for form
   const handleChange = (event) => {
@@ -131,7 +138,7 @@ export default function MainDisplay({
       return filteredList.map((ele, idx) => {
         return (
           <StyledDiv>
-            <div key={idx}>{ele.name}</div>
+            <div onClick={()=>handleClick(ele)} key={idx}>{ele.name}</div>
           </StyledDiv>
         );
       });
@@ -139,7 +146,7 @@ export default function MainDisplay({
     return wineList.map((ele, idx) => {
       return (
         <StyledDiv>
-          <div key={idx}>{ele.name}</div>
+          <div onClick={()=> handleClick(ele)} key={idx}>{ele.name}</div>
         </StyledDiv>
       );
     });

@@ -34,13 +34,7 @@ nav{
   height: 8vh;
   grid-area: nav;
 }
-.Header{
-  background-image: url("https://i.imgur.com/s7LNRhR.png");
-  background-position:center;
-  background-repeat: no-repeat;
-  background-size:100% 100%;
-  height: 35vh;
-}
+
 .Panel{
   grid-area: panel;
 }
@@ -49,28 +43,6 @@ nav{
   grid-area: display;
 }
 
-.Footer{
-  display: inline;
-  display: flex;
-  justify-content: center;
-  color:white;
-  justify-content: space-between;
-  height: 50px;
-  width:50px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding-bottom: -50px;
-  padding-top: -50px;
-  /* position: absolute;
-  width: 100%;
-  bottom: 0; */
-}
-
-.Footer p{
-  width: fit-content;
-  display: flex;
-  display: inline;
-}
 
 .img{
   height: 40vh;
@@ -81,4 +53,8 @@ nav{
   width: 40px;
   height: 100px;
   width: 100px;
+}
+
+.Footer p{
+  display: inline;
 }

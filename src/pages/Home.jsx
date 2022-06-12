@@ -14,8 +14,10 @@ export default function Home(props) {
           wineList={props.wineList}
           wine={props.wine}
           filteredList={props.filteredList}
+          setFilteredList={props.setFilteredList}
           updateWine={props.updateWine}
           handleDelete={props.handleDelete}
+          setWine={props.setWine}
         />
       </main>
     </div>
