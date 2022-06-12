@@ -1,10 +1,13 @@
 *{
   /* border: 2px solid red; */
   font-family: 'Dancing Script', cursive;
+  font-family: 'Lobster Two', cursive;
+
   color: white;
 }
 .App {
   text-align: center;
+  
   
 }
 body{
@@ -51,7 +54,6 @@ nav{
 
 .Footer{
   display: inline;
-  display: flex;
   justify-content: center;
   color:white;
   justify-content: space-between;
@@ -61,15 +63,15 @@ nav{
   margin-top: 10px;
   padding-bottom: -50px;
   padding-top: -50px;
-  /* position: absolute;
-  width: 100%;
-  bottom: 0; */
+  position: absolute;
+  bottom: 0;
 }
 
 .Footer p{
   width: fit-content;
   display: flex;
   display: inline;
+
 }
 
 .img{
