@@ -59,9 +59,16 @@ export default function MainDisplay({
   filteredList,
   updateWine,
   handleDelete,
+  setWine,
+  setFilteredList
 }) {
   let navigate = useNavigate();
   const [editForm, setEditForm] = useState(false);
+
+  const handleClick = (ele) => {
+    setWine(ele);
+    setFilteredList(null);
+  };
 
   const handleChange = (event) => {
     setEditForm((prevState) => ({
@@ -161,7 +168,7 @@ export default function MainDisplay({
       return filteredList.map((ele, idx) => {
         return (
           <StyledDiv key={idx}>
-            <div className="top-info">
+            <div className="top-info" onClick={() => handleClick(ele)}>
               {ele.name} - {ele.type}
               <div> ${ele.price}</div>
             </div>
@@ -180,7 +187,7 @@ export default function MainDisplay({
     return wineList.map((ele, idx) => {
       return (
         <StyledDiv key={idx}>
-          <div className="top-info">
+            <div className="top-info" onClick={() => handleClick(ele)}>
             {ele.name} - {ele.type}
             <div> ${ele.price}</div>
           </div>
