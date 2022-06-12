@@ -1,82 +1,77 @@
-*{
+* {
   /* border: 2px solid red; */
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   color: white;
 }
 .App {
   text-align: center;
-  
 }
-body{
+body {
 }
-.home-icon{
+
+.home-icon {
   width: 50px;
   height: 5vh;
   position: absolute;
   left: 10px;
 }
 
-main{
+main {
   margin: 10px;
-  /* width: 80%; */
   height: 70vh;
   display: grid;
   grid-template-columns: 15% auto;
   grid-template-rows: auto auto;
-  grid-template-areas: 
+  grid-template-areas:
     "panel display"
-    "panel display"
-  ;
-
+    "panel display";
 }
-nav{
+
+nav {
   position: relative;
   height: 8vh;
   grid-area: nav;
 }
-.Header{
+.Header {
   background-image: url("https://i.imgur.com/s7LNRhR.png");
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size: 100% 100%;
   height: 35vh;
 }
-.Panel{
+.Panel {
   grid-area: panel;
 }
 
-.Main-Disp{
+.Main-Disp {
   grid-area: display;
 }
 
-.Footer{
+.Footer {
   display: inline;
   display: flex;
   justify-content: center;
-  color:white;
+  color: white;
   justify-content: space-between;
   height: 50px;
-  width:50px;
+  width: 50px;
   margin-bottom: 10px;
   margin-top: 10px;
   padding-bottom: -50px;
   padding-top: -50px;
-  /* position: absolute;
-  width: 100%;
-  bottom: 0; */
 }
 
-.Footer p{
+.Footer p {
   width: fit-content;
   display: flex;
   display: inline;
 }
 
-.img{
+.img {
   height: 40vh;
   margin-bottom: 70px;
 }
-.link{
+.link {
   height: 40px;
   width: 40px;
   height: 100px;
