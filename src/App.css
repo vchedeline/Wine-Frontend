@@ -1,13 +1,11 @@
 * {
   /* border: 2px solid red; */
-  font-family: 'Dancing Script', cursive;
-  font-family: 'Lobster Two', cursive;
+  font-family: "Dancing Script", cursive;
+  font-family: "Lobster Two", cursive;
   color: white;
 }
 .App {
   text-align: center;
-}
-body {
 }
 
 .home-icon {
@@ -42,11 +40,18 @@ nav {
   grid-area: display;
 }
 
+.Footer {
+  color: white;
+  height: 50px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
 .Footer p {
   width: fit-content;
   display: flex;
   display: inline;
-
 }
 
 .img {

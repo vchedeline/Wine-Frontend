@@ -1,84 +1,74 @@
-import { useEffect, useState } from 'react'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import './App.css'
-import AddWine from './pages/AddWine'
-import Home from './pages/Home'
-import { Route, Routes } from 'react-router'
+import { useEffect, useState } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import "./App.css";
+import AddWine from "./pages/AddWine";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router";
 
-function App () {
-  const [wineList, setWineList] = useState([])
-  const [wine, setWine] = useState(null)
-  const [filteredList, setFilteredList] = useState(null)
+function App() {
+  const [wineList, setWineList] = useState([]);
+  const [wine, setWine] = useState(null);
+  const [filteredList, setFilteredList] = useState(null);
 
-  const URL = 'https://wine-app-group.herokuapp.com/'
+  const URL = "https://wine-app-group.herokuapp.com/";
 
   const getWine = async () => {
-    const response = await fetch(URL + 'vineyard').then(res => res.json())
-    setWineList(response)
-  }
+    const response = await fetch(URL + "vineyard").then((res) => res.json());
+    setWineList(response);
+  };
 
   const updateWine = async (wine, id) => {
-    await fetch(URL + 'wine/' + wine._id, {
-      method: 'PUT',
+    await fetch(URL + "wine/" + wine._id, {
+      method: "PUT",
       headers: {
-        'Content-Type': 'Application/json'
+        "Content-Type": "Application/json",
       },
-      body: JSON.stringify(wine)
-    })
-    getWine()
-  }
+      body: JSON.stringify(wine),
+    });
+    getWine();
+  };
 
-  const addWine = async newWine => {
-    await fetch(URL + 'wine/', {
-      method: 'POST',
+  const addWine = async (newWine) => {
+    await fetch(URL + "wine/", {
+      method: "POST",
       headers: {
-        'Content-Type': 'Application/json'
+        "Content-Type": "Application/json",
       },
-      body: JSON.stringify(newWine)
-    })
-    getWine()
-  }
+      body: JSON.stringify(newWine),
+    });
+    getWine();
+  };
 
   const handleDelete = async () => {
     if (wine) {
-      const id = wine._id
-      await fetch(URL + 'wine/' + id, {
-        method: 'DELETE',
+      const id = wine._id;
+      await fetch(URL + "wine/" + id, {
+        method: "DELETE",
         headers: {
-          'Content-Type': 'Application/json'
-        }
-      }).catch(err => console.log(err))
+          "Content-Type": "Application/json",
+        },
+      }).catch((err) => console.log(err));
 
       //make api call and set wineLest
-      getWine()
+      getWine();
 
       //reset wine
-      setWine(null)
+      setWine(null);
     }
-  }
+  };
 
   useEffect(() => {
-    getWine()
-  }, [])
+    getWine();
+  }, []);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       <Routes>
+        <Route path="/wine" element={<AddWine addWine={addWine} />} />
         <Route
-          path="/wine"
-          element={
-            <AddWine
-              wineList={wineList}
-              addWine={addWine}
-              setWine={setWine}
-              setFilteredList={setFilteredList}
-            />
-          }
-        />
-        <Route
-          path='/'
+          path="/"
           element={
             <Home
               wineList={wineList}
@@ -93,11 +83,10 @@ function App () {
             />
           }
         />
-
       </Routes>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -27,12 +27,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-export default function AddWine({
-  wineList,
-  addWine,
-  setWine,
-  setFilteredList,
-}) {
+export default function AddWine({ addWine }) {
   const [newWine, setNewWine] = useState([]);
   const navigate = useNavigate();
 
@@ -48,12 +43,7 @@ export default function AddWine({
   };
 
   return (
-    <main>
-      <Panel
-        wineList={wineList}
-        setWine={setWine}
-        setFilteredList={setFilteredList}
-      />
+    <>
       <StyledDiv>
         <h1>Enter New Wine</h1>
         <form onSubmit={submitWine}>
@@ -101,7 +91,8 @@ export default function AddWine({
           />
           <button type="submit"> Add New Wine </button>
         </form>
+        <button onClick={() => navigate("/")}>Cancel</button>
       </StyledDiv>
-    </main>
+    </>
   );
 }
