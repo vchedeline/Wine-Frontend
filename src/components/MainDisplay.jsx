@@ -60,7 +60,7 @@ export default function MainDisplay({
   updateWine,
   handleDelete,
   setWine,
-  setFilteredList
+  setFilteredList,
 }) {
   let navigate = useNavigate();
   const [editForm, setEditForm] = useState(false);
@@ -143,13 +143,13 @@ export default function MainDisplay({
       return (
         <StyledDiv>
           <div className="top-info">
-            {wine.name} - {wine.type}
+            {wine.name}
             <div> ${wine.price}</div>
           </div>
           <div className="info">
             <img src={wine.image} alt={wine.name} />
             <div>
-              {wine.year} <br />
+              {wine.type} - Year {wine.year} <br />
               <br />"{wine.details}"<br />
               <br />
               <button
@@ -163,44 +163,42 @@ export default function MainDisplay({
           </div>
         </StyledDiv>
       );
-    }
-    if (filteredList) {
+    } else if (filteredList) {
       return filteredList.map((ele, idx) => {
         return (
           <StyledDiv key={idx}>
             <div className="top-info" onClick={() => handleClick(ele)}>
-              {ele.name} - {ele.type}
+              {ele.name}
               <div> ${ele.price}</div>
             </div>
             <div className="info">
               <img src={ele.image} alt={ele.name} />
               <div>
-                {ele.year} <br />
+                {ele.type} - Year {ele.year} <br />
                 <br />"{ele.details}"
               </div>
             </div>
           </StyledDiv>
         );
       });
-    }
-
-    return wineList.map((ele, idx) => {
-      return (
-        <StyledDiv key={idx}>
+    } else if (wineList)
+      return wineList.map((ele, idx) => {
+        return (
+          <StyledDiv key={idx}>
             <div className="top-info" onClick={() => handleClick(ele)}>
-            {ele.name} - {ele.type}
-            <div> ${ele.price}</div>
-          </div>
-          <div className="info">
-            <img src={ele.image} alt={ele.name} />
-            <div>
-              {ele.year} <br />
-              <br />"{ele.details}"
+              {ele.name}
+              <div> ${ele.price}</div>
             </div>
-          </div>
-        </StyledDiv>
-      );
-    });
+            <div className="info">
+              <img src={ele.image} alt={ele.name} />
+              <div>
+                {ele.type} - Year {ele.year} <br />
+                <br />"{ele.details}"
+              </div>
+            </div>
+          </StyledDiv>
+        );
+      });
   };
 
   return (

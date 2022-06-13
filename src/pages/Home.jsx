@@ -10,7 +10,6 @@ export default function Home(props) {
           setWine={props.setWine}
           setFilteredList={props.setFilteredList}
           getWine={props.getWine}
-          setWineList={props.setWineList}
         />
         <MainDisplay
           wineList={props.wineList}
