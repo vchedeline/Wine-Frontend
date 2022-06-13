@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +7,8 @@ export default function MainDisplay({
   wineList,
   wine,
   filteredList,
+  setFilteredList,
+  setWine,
   updateWine,
   handleDelete,
 }) {
@@ -23,6 +26,12 @@ export default function MainDisplay({
   const [editForm, setEditForm] = useState(false);
 
   // function for form
+  const handleClick = (ele) => {
+    setWine(ele);
+    setFilteredList(null)
+    setWine(ele)
+    ;
+  };
   const handleChange = (event) => {
     setEditForm((prevState) => ({
       ...prevState,
@@ -131,7 +140,7 @@ export default function MainDisplay({
       return filteredList.map((ele, idx) => {
         return (
           <StyledDiv>
-            <div key={idx}>{ele.name}</div>
+            <div key={idx} onClick={()=>handleClick ()}>{ele.name}</div>
           </StyledDiv>
         );
       });

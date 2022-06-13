@@ -35,10 +35,9 @@ nav{
   grid-area: nav;
 }
 .Header{
-  background-image: url("https://i.imgur.com/s7LNRhR.png");
   background-position:center;
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size:97% 100%;
   height: 35vh;
 }
 .Panel{
@@ -73,8 +72,9 @@ nav{
 }
 
 .img{
-  height: 40vh;
-  margin-bottom: 70px;
+
+  height: 300px;
+  width: 400px;
 }
 .link{
   height: 40px;
