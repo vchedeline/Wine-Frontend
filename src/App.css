@@ -4,15 +4,15 @@
   font-family: "Lobster Two", cursive;
   color: white;
 }
-.App {
-  text-align: center;
+
+html, body{
+  height: 100vh;
+  position: relative;
 }
 
-.home-icon {
-  width: 50px;
-  height: 5vh;
-  position: absolute;
-  left: 10px;
+.App {
+  text-align: center;
+  position: relative;
 }
 
 main {
@@ -26,12 +26,6 @@ main {
     "panel display";
 }
 
-nav {
-  position: relative;
-  height: 8vh;
-  grid-area: nav;
-}
-
 .Panel {
   grid-area: panel;
 }
@@ -40,19 +34,6 @@ nav {
   grid-area: display;
 }
 
-.Footer {
-  color: white;
-  height: 50px;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-
-.Footer p {
-  width: fit-content;
-  display: flex;
-  display: inline;
-}
 
 .img {
   height: 40vh;

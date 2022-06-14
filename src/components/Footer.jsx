@@ -5,15 +5,20 @@ const StyleFooter = styled.div`
   color: white;
   height: 50px;
   position: absolute;
+  left: 0;
   width: 100%;
-  bottom: 0;
+
+  p{
+    width: fit-content;
+    display: inline;
+  }
 `;
 
-export default function Footer() {
+export default function Footer({wine}) {
   return (
     <StyleFooter>
-      <div className="Footer">
-        <h2>Vineyards Dev Team:</h2>
+      <div className={wine ? "wine-footer" : "Footer"}>
+        <div>Vineyards Dev Team:</div>
         <p>
           Chedeline Viljean{" "}
           <a href="https://www.google.com" target="_blank" rel="noreferrer">

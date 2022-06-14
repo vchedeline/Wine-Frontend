@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const StyledDiv = styled.div`
   background-color: transparent;
@@ -10,7 +11,7 @@ const StyledDiv = styled.div`
   flex-direction: column;
   margin: 40px auto;
   padding: 20px;
-
+  
   img {
     height: 200px;
   }
@@ -83,6 +84,12 @@ export default function MainDisplay({
     setEditForm(false);
     navigate("/");
   };
+
+  const style = {
+    'position': 'absolute',
+    'bottom': '-10px',
+    'display': 'inline'
+  }
 
   const loaded = () => {
     if (editForm) {
@@ -184,24 +191,31 @@ export default function MainDisplay({
     } else if (wineList)
       return wineList.map((ele, idx) => {
         return (
-          <StyledDiv key={idx}>
-            <div className="top-info" onClick={() => handleClick(ele)}>
-              {ele.name}
-              <div> ${ele.price}</div>
-            </div>
-            <div className="info">
-              <img src={ele.image} alt={ele.name} />
-              <div>
-                {ele.type} - Year {ele.year} <br />
-                <br />"{ele.details}"
+          <div>
+            <StyledDiv key={idx}>
+              <div className="top-info" onClick={() => handleClick(ele)}>
+                {ele.name}
+                <div> ${ele.price}</div>
               </div>
-            </div>
-          </StyledDiv>
+              <div className="info">
+                <img src={ele.image} alt={ele.name} />
+                <div>
+                  {ele.type} - Year {ele.year} <br />
+                  <br />"{ele.details}"
+                </div>
+              </div>
+            </StyledDiv>
+          </div>
         );
       });
   };
 
   return (
-    <div className="Main-Disp">{wineList ? loaded() : <h1>Loading...</h1>}</div>
+    <div className="Main-Disp">{wineList ? loaded() : <h1>Loading...</h1>}
+      <div >
+      {!wine ? <Footer/> : <></>}
+      </div>
+    </div>
+    
   );
 }

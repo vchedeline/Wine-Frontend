@@ -63,7 +63,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div id="container" className="App">
       <Header />
       <Routes>
         <Route path="/newwine" element={<AddWine addWine={addWine} />} />
@@ -84,7 +84,7 @@ function App() {
           }
         />
       </Routes>
-      <Footer />
+      <div>{wine ? <Footer/> : <></>}</div>
     </div>
   );
 }
