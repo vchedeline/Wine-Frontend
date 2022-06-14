@@ -26,6 +26,7 @@ function App() {
       },
       body: JSON.stringify(wine),
     });
+    setWine(wine);
     getWine();
   };
 
@@ -37,6 +38,7 @@ function App() {
       },
       body: JSON.stringify(newWine),
     });
+    setWine(newWine);
     getWine();
   };
 
@@ -49,11 +51,7 @@ function App() {
           "Content-Type": "Application/json",
         },
       }).catch((err) => console.log(err));
-
-      //make api call and set wineLest
       getWine();
-
-      //reset wine
       setWine(null);
     }
   };
@@ -84,7 +82,7 @@ function App() {
           }
         />
       </Routes>
-      <div>{wine ? <Footer/> : <></>}</div>
+      <div>{wine ? <Footer /> : <></>}</div>
     </div>
   );
 }

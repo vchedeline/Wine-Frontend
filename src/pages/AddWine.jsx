@@ -34,7 +34,7 @@ export default function AddWine({ addWine }) {
     year: "",
     price: "",
     details: "",
-    image: "https://i.imgur.com/8JnFwOu.png",
+    image: "https://i.imgur.com/HEbHUUf.png",
   });
   const navigate = useNavigate();
 
@@ -100,7 +100,7 @@ export default function AddWine({ addWine }) {
         </form>
         <button onClick={() => navigate("/")}>Cancel</button>
       </StyledDiv>
-      <Footer/>
+      <Footer />
     </>
   );
 }
