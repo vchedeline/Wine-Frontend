@@ -55,6 +55,27 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
     setWine(null);
   };
 
+  const displayOthers = (others) => {
+    if (others.length === 0) return;
+    else {
+      return (
+        <>
+          <h1 onClick={() => handleFilter(others)}>Others</h1>
+          {others.map((o, idx) => {
+            return (
+              <div
+                className="wine-list"
+                key={idx}
+                onClick={() => handleClick(o)}>
+                {o.name}
+              </div>
+            );
+          })}
+        </>
+      );
+    }
+  };
+
   const loaded = () => {
     const whites = wineList.filter((wine) => {
       return wine.type === "White";
@@ -64,11 +85,15 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
       return wine.type === "Red";
     });
 
+    const others = wineList.filter((wine) => {
+      return wine.type !== "Red" && wine.type !== "White";
+    });
+
     return (
       <FullPanel>
         <div>
           <h1 onClick={() => handleFilter(whites)}>
-            <Link to="/wine">
+            <Link to="/newwine">
               <Icons>
                 <FiPlusCircle />
               </Icons>
@@ -94,7 +119,6 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
               </div>
             );
           })}
-
           <h1 onClick={() => handleFilter(reds)}>Reds</h1>
           {reds.map((r, idx) => {
             return (
@@ -106,6 +130,7 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
               </div>
             );
           })}
+          {displayOthers(others)}
         </div>
       </FullPanel>
     );

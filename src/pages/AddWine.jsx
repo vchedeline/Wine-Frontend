@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Panel from "../components/Panel";
 
 const StyledDiv = styled.div`
   button {
@@ -87,7 +86,7 @@ export default function AddWine({ addWine }) {
             name="image"
             value={newWine.image}
             onChange={handleChange}
-            placeholder="image"
+            placeholder="https://i.imgur.com/8JnFwOu.png"
           />
           <button type="submit"> Add New Wine </button>
         </form>
