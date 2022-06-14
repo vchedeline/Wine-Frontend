@@ -30,7 +30,7 @@ function App() {
   };
 
   const addWine = async (newWine) => {
-    await fetch(URL + "wine/", {
+    await fetch(URL + "wine", {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",

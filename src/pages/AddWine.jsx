@@ -28,7 +28,14 @@ const StyledDiv = styled.div`
 `;
 
 export default function AddWine({ addWine }) {
-  const [newWine, setNewWine] = useState([]);
+  const [newWine, setNewWine] = useState({
+    name: "",
+    type: "",
+    year: "",
+    price: "",
+    details: "",
+    image: "https://i.imgur.com/8JnFwOu.png",
+  });
   const navigate = useNavigate();
 
   const handleChange = (evt) => {
