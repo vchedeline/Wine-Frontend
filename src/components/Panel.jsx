@@ -11,6 +11,7 @@ const PanelDiv = styled.div`
   width: 100%;
   align-items: center;
   padding: 1em;
+  
   &:hover,
   &:focus {
     color: palevioletred;

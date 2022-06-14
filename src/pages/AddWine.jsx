@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Panel from "../components/Panel";
+import Footer from "../components/Footer";
 
 const StyledDiv = styled.div`
   button {
@@ -93,6 +94,7 @@ export default function AddWine({ addWine }) {
         </form>
         <button onClick={() => navigate("/")}>Cancel</button>
       </StyledDiv>
+      <Footer/>
     </>
   );
 }
