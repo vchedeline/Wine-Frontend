@@ -66,7 +66,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/wine" element={<AddWine addWine={addWine} />} />
+        <Route path="/newwine" element={<AddWine addWine={addWine} />} />
         <Route
           path="/"
           element={
