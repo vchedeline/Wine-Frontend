@@ -31,7 +31,6 @@ const PanelDiv = styled.div`
   h1: hover {
     color: tan;
   }
-
   .wine-list {
     font-size: 1.3rem;
   }
