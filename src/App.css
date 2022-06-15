@@ -13,7 +13,7 @@ main {
   margin: 10px;
   height: 70vh;
   display: grid;
-  grid-template-columns: 15% auto;
+  grid-template-columns: 20% auto;
   grid-template-rows: auto auto;
   grid-template-areas:
     "panel display"

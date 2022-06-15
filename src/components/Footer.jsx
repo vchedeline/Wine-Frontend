@@ -18,7 +18,7 @@ const StyleFooter = styled.div`
   }
 
   a:hover {
-    color:  palevioletred;
+    color: palevioletred;
   }
 `;
 

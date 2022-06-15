@@ -5,16 +5,16 @@ import { FiPlusCircle, FiHome } from "react-icons/fi";
 const PanelDiv = styled.div`
   background-color: RGBA(126, 15, 16, 0.5);
   color: white;
-  height: 100%;
+  height: 125%;
   font-size: 16pt;
   border-radius: 10px;
-  width: 100%;
+  width: 80%;
   align-items: center;
   padding: 1em;
   
   &:hover,
   &:focus {
-    color: palevioletred;
+    color: tan;
   }
   &:active {
     color: white;
@@ -29,29 +29,44 @@ const PanelDiv = styled.div`
 
   }
 
+  h1: hover {
+    color: tan
+  }
+
   .wine-list {
-    font-size: 20px;
+    font-size: 1.3rem;
 
   }
 
   .wine-list: hover {
-    color: yellowgreen;
+    color: tan;
     cursor: pointer;
-    text-decoration: underline;
   }
   
   .white-wines {
     margin-top: 0px
 
   }
-`;
+
+  #small-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  #icons:hover {
+    font-size: 40px;
+  }
+`
 
 const Icons = styled.button`
-  font-size: 30px;
+  font-size: 150%;
   text-decoration: none;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  margin-left: 65px;
+  margin-right: 65px;
 `;
 const FullPanel = styled.div`
   display: flex;
@@ -108,23 +123,25 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
     return (
       <FullPanel>
         <div>
-          <h1 onClick={() => handleFilter(whites)} className="white-wines">
+          <div id="small-nav">
             <Link to="/newwine">
-              <Icons className="icons">
+              <Icons id="icons">
                 <FiPlusCircle />
               </Icons>
             </Link>
-            Whites
-            <Icons className="icons">
+                  <h1 onClick={() => handleFilter(whites)} className="white-wines">
+                Whites
+          </h1>
+            <Icons id="icons">
               <FiHome
                 onClick={() => {
                   setWine(null);
                   setFilteredList(null);
                   getWine();
                 }}
-              />
+                />
             </Icons>
-          </h1>
+                </div>
           {whites.map((w, idx) => {
             return (
               <div
