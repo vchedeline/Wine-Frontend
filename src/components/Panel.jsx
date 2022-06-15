@@ -11,7 +11,7 @@ const PanelDiv = styled.div`
   width: 80%;
   align-items: center;
   padding: 1em;
-  
+
   &:hover,
   &:focus {
     color: tan;
@@ -26,26 +26,23 @@ const PanelDiv = styled.div`
     align-items: center;
     margin-bottom: 0px;
     cursor: pointer;
-
   }
 
   h1: hover {
-    color: tan
+    color: tan;
   }
 
   .wine-list {
     font-size: 1.3rem;
-
   }
 
   .wine-list: hover {
     color: tan;
     cursor: pointer;
   }
-  
-  .white-wines {
-    margin-top: 0px
 
+  .white-wines {
+    margin-top: 0px;
   }
 
   #small-nav {
@@ -53,11 +50,11 @@ const PanelDiv = styled.div`
     align-items: center;
     justify-content: space-around;
   }
-  
+
   #icons:hover {
     font-size: 40px;
   }
-`
+`;
 
 const Icons = styled.button`
   font-size: 150%;
@@ -129,9 +126,9 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
                 <FiPlusCircle />
               </Icons>
             </Link>
-                  <h1 onClick={() => handleFilter(whites)} className="white-wines">
-                Whites
-          </h1>
+            <h1 onClick={() => handleFilter(whites)} className="white-wines">
+              Whites
+            </h1>
             <Icons id="icons">
               <FiHome
                 onClick={() => {
@@ -139,9 +136,9 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
                   setFilteredList(null);
                   getWine();
                 }}
-                />
+              />
             </Icons>
-                </div>
+          </div>
           {whites.map((w, idx) => {
             return (
               <div
