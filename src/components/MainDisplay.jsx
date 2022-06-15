@@ -11,6 +11,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   margin: 40px auto;
+  margin-left: 10px;
   padding: 20px;
 
   img {
