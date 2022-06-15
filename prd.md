@@ -4,8 +4,8 @@
 | Field | Detail |
 |-------|--------|
 | Project Name | Vineyard Wine App|
-| Description |Wine POS (Point of sale) and database for all wine connoisseurs |
-| Developers | Chediline Viljean, Nathan Yi, Omari Archer, Calvin Harris  |
+| Description |Wine Menu and database for all wine connoisseurs |
+| Developers | Chedeline Viljean, Nathan Yi, Omari Archer, Calvin Harris  |
 | Live Website | https://sasquatch-winos.netlify.app/ |
 | Repo | https://github.com/vchedeline/Wine-Backend,  |
 
