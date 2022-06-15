@@ -90,12 +90,6 @@ export default function MainDisplay({
     navigate("/");
   };
 
-  // const style = {
-  //   position: "absolute",
-  //   bottom: "-10px",
-  //   display: "inline",
-  // };
-
   const loaded = () => {
     if (editForm) {
       return (
@@ -215,9 +209,9 @@ export default function MainDisplay({
   };
 
   return (
-    <div className="Main-Disp">
-      {wineList ? loaded() : <h1>Loading...</h1>}
-      <div>{!wine ? <Footer /> : <></>}</div>
+    <div className="Main-Disp">{wineList ? loaded() : <h1>Loading...</h1>}
+      <div> {!wine ? <Footer/> : <></>} </div>
+
     </div>
   );
 }
