@@ -1,8 +1,18 @@
 body {
-  background-image: url("https://i.imgur.com/9verbbU.png");
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+background-image: url("https://i.imgur.com/9verbbU.png");
+background-size:25vw 100vh;
+background-repeat: repeat-x;
+/* background-position: center; */
+position: fixed; 
+top: 0; 
+left: 0; 
+min-width: 100%;
+min-height: 100%;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+

@@ -26,7 +26,18 @@ main {
     "panel display";
 }
 
-.Panel {
+nav{
+  position: relative;
+  height: 8vh;
+  grid-area: nav;
+}
+.Header{
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:97% 100%;
+  height: 35vh;
+}
+.Panel{
   grid-area: panel;
 }
 
@@ -35,9 +46,10 @@ main {
 }
 
 
-.img {
-  height: 40vh;
-  margin-bottom: 70px;
+
+.img{
+  height: 300px;
+  width: 400px;
 }
 
 .link {

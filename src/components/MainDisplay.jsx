@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
@@ -11,9 +12,12 @@ const StyledDiv = styled.div`
   flex-direction: column;
   margin: 40px auto;
   padding: 20px;
-  
+
   img {
     height: 200px;
+    width: 90px;
+    padding: 20px;
+    object-fit: contain;
   }
 
   button {
@@ -48,7 +52,8 @@ const StyledDiv = styled.div`
   }
 
   .info {
-    display: flex;
+    display: grid;
+    grid-template: 1fr /1fr 5fr;
     align-items: center;
     font-size: larger;
   }
@@ -58,10 +63,10 @@ export default function MainDisplay({
   wineList,
   wine,
   filteredList,
+  setFilteredList,
+  setWine,
   updateWine,
   handleDelete,
-  setWine,
-  setFilteredList,
 }) {
   let navigate = useNavigate();
   const [editForm, setEditForm] = useState(false);
@@ -167,6 +172,7 @@ export default function MainDisplay({
     } else if (filteredList) {
       return filteredList.map((ele, idx) => {
         return (
+
           <StyledDiv key={idx}>
             <div className="top-info" onClick={() => handleClick(ele)}>
               {ele.name}
@@ -185,21 +191,19 @@ export default function MainDisplay({
     } else if (wineList)
       return wineList.map((ele, idx) => {
         return (
-          <div>
-            <StyledDiv key={idx}>
-              <div className="top-info" onClick={() => handleClick(ele)}>
-                {ele.name}
-                <div> ${ele.price}</div>
+          <StyledDiv key={idx}>
+            <div className="top-info" onClick={() => handleClick(ele)}>
+              {ele.name}
+              <div> ${ele.price}</div>
+            </div>
+            <div className="info">
+              <img src={ele.image} alt={ele.name} />
+              <div>
+                {ele.type} - Year {ele.year} <br />
+                <br />"{ele.details}"
               </div>
-              <div className="info">
-                <img src={ele.image} alt={ele.name} />
-                <div>
-                  {ele.type} - Year {ele.year} <br />
-                  <br />"{ele.details}"
-                </div>
-              </div>
-            </StyledDiv>
-          </div>
+            </div>
+          </StyledDiv>
         );
       });
   };
@@ -207,7 +211,7 @@ export default function MainDisplay({
   return (
     <div className="Main-Disp">{wineList ? loaded() : <h1>Loading...</h1>}
       <div> {!wine ? <Footer/> : <></>} </div>
+
     </div>
-    
   );
 }

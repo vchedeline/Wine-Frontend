@@ -24,11 +24,25 @@ const PanelDiv = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 0;
+    margin-bottom: 0px;
+    cursor: pointer;
+
   }
 
   .wine-list {
     font-size: 20px;
+
+  }
+
+  .wine-list: hover {
+    color: yellowgreen;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .white-wines {
+    margin-top: 0px
+
   }
 `;
 
@@ -37,6 +51,7 @@ const Icons = styled.button`
   text-decoration: none;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 const FullPanel = styled.div`
   display: flex;
@@ -56,6 +71,27 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
     setWine(null);
   };
 
+  const displayOthers = (others) => {
+    if (others.length === 0) return;
+    else {
+      return (
+        <>
+          <h1 onClick={() => handleFilter(others)}>Others</h1>
+          {others.map((o, idx) => {
+            return (
+              <div
+                className="wine-list"
+                key={idx}
+                onClick={() => handleClick(o)}>
+                {o.name}
+              </div>
+            );
+          })}
+        </>
+      );
+    }
+  };
+
   const loaded = () => {
     const whites = wineList.filter((wine) => {
       return wine.type === "White";
@@ -65,17 +101,21 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
       return wine.type === "Red";
     });
 
+    const others = wineList.filter((wine) => {
+      return wine.type !== "Red" && wine.type !== "White";
+    });
+
     return (
       <FullPanel>
         <div>
-          <h1 onClick={() => handleFilter(whites)}>
-            <Link to="/wine">
-              <Icons>
+          <h1 onClick={() => handleFilter(whites)} className="white-wines">
+            <Link to="/newwine">
+              <Icons className="icons">
                 <FiPlusCircle />
               </Icons>
             </Link>
             Whites
-            <Icons>
+            <Icons className="icons">
               <FiHome
                 onClick={() => {
                   setWine(null);
@@ -95,7 +135,6 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
               </div>
             );
           })}
-
           <h1 onClick={() => handleFilter(reds)}>Reds</h1>
           {reds.map((r, idx) => {
             return (
@@ -107,6 +146,7 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
               </div>
             );
           })}
+          {displayOthers(others)}
         </div>
       </FullPanel>
     );
