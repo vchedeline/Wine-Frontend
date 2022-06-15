@@ -1,63 +1,103 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import AddWine from "./pages/AddWine";
-import { Routes, Route } from "react-router";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import MainDisplay from "./components/MainDisplay";
+import { useEffect, useState } from 'react'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import './App.css'
+import AddWine from './pages/AddWine'
+import Home from './pages/Home'
+import { Route, Routes } from 'react-router'
 
-function App() {
-  const [wineList, setWineList] = useState([]);
-  const [filteredWhites, setFilteredWhites] = useState([]);
-  const [filteredReds, setFilteredReds] = useState([]);
+function App () {
+  const [wineList, setWineList] = useState([])
+  const [wine, setWine] = useState(null)
+  const [filteredList, setFilteredList] = useState(null)
 
-  const URL = `https://wine-app-group.herokuapp.com/`;
+  const URL = 'https://wine-app-group.herokuapp.com/'
 
-  const getWines = async () => {
-    const data = await fetch(URL + "vineyard").then((response) =>
-      response.json(),
-    );
-    setWineList(data);
-  };
+  const getWine = async () => {
+    const response = await fetch(URL + 'vineyard').then(res => res.json())
+    setWineList(response)
+  }
+
+  const updateWine = async (wine, id) => {
+    await fetch(URL + 'wine/' + wine._id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(wine)
+    })
+    getWine()
+  }
+
+  const addWine = async newWine => {
+    await fetch(URL + 'wine/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(newWine)
+    })
+    getWine()
+  }
+
+  const handleDelete = async () => {
+    if (wine) {
+      const id = wine._id
+      await fetch(URL + 'wine/' + id, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'Application/json'
+        }
+      }).catch(err => console.log(err))
+
+      //make api call and set wineLest
+      getWine()
+
+      //reset wine
+      setWine(null)
+    }
+  }
 
   useEffect(() => {
-    getWines();
-  }, []);
+    getWine()
+  }, [])
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
-      <Nav />
       <Routes>
         <Route
-          path="/"
+          path="/wine"
           element={
-            <Home
+            <AddWine
               wineList={wineList}
-              setFilteredReds={setFilteredReds}
-              setFilteredWhites={setFilteredWhites}
+              addWine={addWine}
+              setWine={setWine}
+              setFilteredList={setFilteredList}
             />
           }
         />
         <Route
-          path="/wines/reds"
+          path='/'
           element={
-            <MainDisplay wineList={wineList} filteredReds={filteredReds} />
+            <Home
+              wineList={wineList}
+              wine={wine}
+              setWine={setWine}
+              setFilteredList={setFilteredList}
+              filteredList={filteredList}
+              updateWine={updateWine}
+              handleDelete={handleDelete}
+              getWine={getWine}
+              setWineList={setWineList}
+            />
           }
         />
-        <Route
-          path="/wines/whites"
-          element={
-            <MainDisplay wineList={wineList} filteredWhites={filteredWhites} />
-          }
-        />
-        <Route path="/addwine" element={<AddWine />} />
+
       </Routes>
       <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
