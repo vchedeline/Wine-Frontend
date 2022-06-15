@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
@@ -177,6 +178,7 @@ export default function MainDisplay({
     } else if (filteredList) {
       return filteredList.map((ele, idx) => {
         return (
+
           <StyledDiv key={idx}>
             <div className="top-info" onClick={() => handleClick(ele)}>
               {ele.name}
