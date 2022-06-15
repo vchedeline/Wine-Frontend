@@ -1,24 +1,51 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { FiPlusCircle, FiHome } from "react-icons/fi";
 
-export default function Panel({ wineList, setWine, setFilteredList }) {
-  const PanelDiv = styled.div`
-    background-color: RGBA(126, 15, 16, 0.5);
+const PanelDiv = styled.div`
+  background-color: RGBA(126, 15, 16, 0.5);
+  color: white;
+  height: 100%;
+  font-size: 16pt;
+  border-radius: 10px;
+  width: 100%;
+  align-items: center;
+  padding: 1em;
+  
+  &:hover,
+  &:focus {
+    color: palevioletred;
+  }
+  &:active {
     color: white;
-    font-size: 16pt;
-    border-radius: 10px;
-    width: 80%;
-    align-items: center;
-    padding: 50px;
-    &:hover,
-    &:focus {
-      color: palevioletred;
-    }
-    &:active {
-      color: white;
-    }
-  `;
+  }
 
+  h1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .wine-list {
+    font-size: 20px;
+  }
+`;
+
+const Icons = styled.button`
+  font-size: 30px;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+`;
+const FullPanel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+`;
+
+export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
   const handleClick = (ele) => {
     setWine(ele);
     setFilteredList(null);
@@ -27,6 +54,27 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
   const handleFilter = (list) => {
     setFilteredList(list);
     setWine(null);
+  };
+
+  const displayOthers = (others) => {
+    if (others.length === 0) return;
+    else {
+      return (
+        <>
+          <h1 onClick={() => handleFilter(others)}>Others</h1>
+          {others.map((o, idx) => {
+            return (
+              <div
+                className="wine-list"
+                key={idx}
+                onClick={() => handleClick(o)}>
+                {o.name}
+              </div>
+            );
+          })}
+        </>
+      );
+    }
   };
 
   const loaded = () => {
@@ -38,31 +86,54 @@ export default function Panel({ wineList, setWine, setFilteredList }) {
       return wine.type === "Red";
     });
 
+    const others = wineList.filter((wine) => {
+      return wine.type !== "Red" && wine.type !== "White";
+    });
+
     return (
-      <>
-        <Link to="/wine">
-          <h1>Add New Wine</h1>
-        </Link>
+      <FullPanel>
         <div>
-          <h1 onClick={() => handleFilter(whites)}>White</h1>
+          <h1 onClick={() => handleFilter(whites)}>
+            <Link to="/newwine">
+              <Icons>
+                <FiPlusCircle />
+              </Icons>
+            </Link>
+            Whites
+            <Icons>
+              <FiHome
+                onClick={() => {
+                  setWine(null);
+                  setFilteredList(null);
+                  getWine();
+                }}
+              />
+            </Icons>
+          </h1>
           {whites.map((w, idx) => {
             return (
-              <div className="whites" key={idx} onClick={() => handleClick(w)}>
+              <div
+                className="wine-list"
+                key={idx}
+                onClick={() => handleClick(w)}>
                 {w.name}
               </div>
             );
           })}
-
           <h1 onClick={() => handleFilter(reds)}>Reds</h1>
           {reds.map((r, idx) => {
             return (
-              <div key={idx} onClick={() => handleClick(r)}>
+              <div
+                className="wine-list"
+                key={idx}
+                onClick={() => handleClick(r)}>
                 {r.name}
               </div>
             );
           })}
+          {displayOthers(others)}
         </div>
-      </>
+      </FullPanel>
     );
   };
 

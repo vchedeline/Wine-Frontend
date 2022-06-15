@@ -26,17 +26,19 @@ function App() {
       },
       body: JSON.stringify(wine),
     });
+    setWine(wine);
     getWine();
   };
 
   const addWine = async (newWine) => {
-    await fetch(URL + "wine/", {
+    await fetch(URL + "wine", {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",
       },
       body: JSON.stringify(newWine),
     });
+    setWine(newWine);
     getWine();
   };
 
@@ -49,11 +51,7 @@ function App() {
           "Content-Type": "Application/json",
         },
       }).catch((err) => console.log(err));
-
-      //make api call and set wineLest
       getWine();
-
-      //reset wine
       setWine(null);
     }
   };
@@ -63,13 +61,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div id="container" className="App">
       <Header />
       <Routes>
-        <Route
-          path="/wine"
-          element={<AddWine wineList={wineList} addWine={addWine} />}
-        />
+        <Route path="/newwine" element={<AddWine addWine={addWine} />} />
         <Route
           path="/"
           element={
@@ -81,11 +76,13 @@ function App() {
               filteredList={filteredList}
               updateWine={updateWine}
               handleDelete={handleDelete}
+              getWine={getWine}
+              setWineList={setWineList}
             />
           }
         />
       </Routes>
-      <Footer />
+      <div>{wine ? <Footer /> : <></>}</div>
     </div>
   );
 }
