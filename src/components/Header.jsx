@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const StyleHeader = styled.div`
   img {
-    position: relative;
-    top: 0px;
+    // position: relative;
+    // top: 0px;
     height: 38vh;
     width: 38vw;
     margin-bottom: 0;
