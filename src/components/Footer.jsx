@@ -24,6 +24,7 @@ const StyleFooter = styled.div`
 
   a:hover {
     color:  palevioletred;
+    text-decoration: underline;
   }
 `;
 
