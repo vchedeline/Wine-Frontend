@@ -18,6 +18,6 @@ export default function Header() {
             <div className="Header">
                <img className="img" src="https://i.imgur.com/VtFrpVO.png?1" alt=""/>
             </div>
-        </StyleHeader>
+        </StyleHeader> 
     )
 }
