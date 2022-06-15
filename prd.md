@@ -7,7 +7,10 @@
 | Description |Wine Menu and database for all wine connoisseurs |
 | Developers | Chedeline Viljean, Nathan Yi, Omari Archer, Calvin Harris |
 | Live Website | https://sasquatch-winos.netlify.app/ |
-| Repo | https://github.com/vchedeline/Wine-Backend, |
+| Repo | https://github.com/vchedeline/Wine-Backend,  |
+| Planning | https://miro.com/app/board/uXjVOvArU-k=/ |
+| Technologies | HTML,CSS, JavaScript, REACT, NodeJS, Mongoose, MongoDB, Netlify, Heroku, Imgur, Miro, Styled-Components, Github, Postman. |
+
 
 ## Problem Being Solved and Target Market
 
@@ -51,3 +54,10 @@ flowchart LR
 ![Web Mockup](https://i.imgur.com/ptZstcA.jpg)
 
 ![Web Mockup](https://i.imgur.com/7C0ioOL.jpg)
+
+## Live Site
+![Live Site](https://i.imgur.com/l9njYFQ.png)
+![Live Site](https://i.imgur.com/OfeSajv.png)
+![Live Site](https://i.imgur.com/5tSEC1m.png)
+![Live Site](https://i.imgur.com/vIKhECh.png)
+
