@@ -7,8 +7,6 @@
 .App {
   text-align: center;
 }
-body {
-}
 
 .home-icon {
   width: 50px;
@@ -47,11 +45,6 @@ nav {
   display: flex;
   display: inline;
 
-}
-
-.img {
-  height: 40vh;
-  margin-bottom: 70px;
 }
 
 .link {

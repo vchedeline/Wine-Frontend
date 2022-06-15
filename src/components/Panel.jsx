@@ -25,7 +25,6 @@ const PanelDiv = styled.div`
     align-items: center;
     margin-top: 0;
   }
-
   .wine-list {
     font-size: 20px;
   }
