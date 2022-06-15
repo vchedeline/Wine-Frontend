@@ -28,7 +28,14 @@ const StyledDiv = styled.div`
 `;
 
 export default function AddWine({ addWine }) {
-  const [newWine, setNewWine] = useState([]);
+  const [newWine, setNewWine] = useState({
+    name: "",
+    type: "",
+    year: "",
+    price: "",
+    details: "",
+    image: "https://i.imgur.com/HEbHUUf.png",
+  });
   const navigate = useNavigate();
 
   const handleChange = (evt) => {
@@ -93,7 +100,7 @@ export default function AddWine({ addWine }) {
         </form>
         <button onClick={() => navigate("/")}>Cancel</button>
       </StyledDiv>
-      <Footer/>
+      <Footer />
     </>
   );
 }
