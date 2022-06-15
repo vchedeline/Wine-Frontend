@@ -3,65 +3,54 @@
 **Summary**
 | Field | Detail |
 |-------|--------|
-| Project Name | {Put Project Name Here}|
-| Description | {One sentence summarizing what is the app and why it matters} |
-| Developers | {List of Developers} |
-| Live Website | {website of deployed application} |
-| Repo | {Link to git repository} |
+| Project Name | Vineyard Wine App|
+| Description |Wine POS (Point of sale) and database for all wine connoisseurs |
+| Developers | Chediline Viljean, Nathan Yi, Omari Archer, Calvin Harris  |
+| Live Website | https://sasquatch-winos.netlify.app/ |
+| Repo | https://github.com/vchedeline/Wine-Backend,  |
 
 ## Problem Being Solved and Target Market
 
-Use this area to explain what problem your app is solving, and who are the people who have this problem.
+For the wine distributor, restaurant owner or even the modest collector the Vineyard App makes selecting your next exquiste Wine easy, choose from a large selection of aged imports guarenteed to revitalize your collection. 
 
 ## User Stories
 
-List of stories users should experience when using your application.
-
-- Users should be able to see the site on desktop and mobile
-- Users can create an account
-- Users can sign in to their account
-- Users can create a new item
-- Users can see all their items on the dashboard
-- Users can update items
-- User can delete items
+- As a user, I want to add a wine to list
+- As a user, I want to be able to delete a specific wine
+- As a user, I want to click on a wine and see the details
+- As a user, I want to be able to edit and update a specific wine
+- As a user, I want to categorize the wines
 
 ## Route Tables
 
-For backend Applications you'll want to detail the different routes and types of your request your server can receive. There are three main things to define.
-
-- The endpoint: the URL to which the request must be made
-- The method: the type of http method the request should be
-- The response: what the response should be, a web page, json data, etc.
-
-You should also include any additional notes on any special headers that may be used and so forth.
-
 | Endpoint | Method | Response | Other |
 | -------- | ------ | -------- | ----- |
-| /item | GET | JSON of all items | |
-| /item | POST | Create new item return JSON of new item | body must include data for new item |
-| /item/:id | GET | JSON of item with matching id number | |
-| /item/:id | PUT | update item with matching idea, return its JSON | body must include updated data |
-| /item/:id | DELETE | delete the item with the matching id | |
-| /auth/signup | POST | creates new user account returns user JSON | new user info must be included in body |
-| /auth/login | POST | logs in user and returns user JSON with JWT token | username and password must be included in body |
+| /vineyard | GET | Display of all Wine | |
+| /wine | POST | Create new Wine | body must include data for new item |
+| /wine/:id | GET | Get a specific Wine | |
+| /wine/:id | PUT | Update/Change Wine information | body must include updated data |
+| /:wine/:id | DELETE | Delete a wine by id | |
+
 
 ## Component Architecture
-
-You can use the [Mermaid Markdown Syntax](https://mermaid-js.github.io/mermaid/#/flowchart) to create a chart of how the parts of your frontend website relate to each other. Units should represent components of your page. The following is an example you may see in a Single Page Application like a React App.
 
 ```mermaid
 flowchart LR
   App-->Header
-  App-->Main
+  App-->MainDisplay-->Home-->AddWine
   App-->Footer
-  Main-->Router
-  Router-->Home
-  Router-->Login
-  Router-->Dashboard
+  MainDisplay-->Panel-->Nav
+  
 ```
 
 ## User Interface Mockups
 
-Use tooks like [Figma](https://www.figma.com/), [Mockflow](https://www.mockflow.com/) or [UXPIN](https://www.uxpin.com/). If you need inspiration visit a site like [Behance](https://www.behance.net/?tracking_source=typeahead_search_direct&search=web%20mockup). 
 
-![Web Mockup](https://zippypixels.com/wp-content/uploads/2015/09/01-Free-perspective-website-mockup-824x542.jpg)
+![Web Mockup](https://i.imgur.com/wSE6lYM.png!)
+
+![Web Mockup](https://i.imgur.com/OLjRw2t.jpg)
+
+![Web Mockup](https://i.imgur.com/ptZstcA.jpg)
+
+![Web Mockup](https://i.imgur.com/7C0ioOL.jpg)
+

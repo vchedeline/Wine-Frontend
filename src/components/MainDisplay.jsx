@@ -3,6 +3,57 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const StyledDiv = styled.div`
+  background-color: transparent;
+  border-radius: 3%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto;
+  padding: 20px;
+
+  img {
+    height: 200px;
+  }
+
+  button {
+    background-color: RGBA(126, 15, 16, 0.7);
+    margin: 5px;
+    padding: 5px;
+    width: 8em;
+    font-size: large;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      color: maroon;
+      width: 20vw;
+      margin: 20px;
+      font-size: larger;
+      text-align: center;
+    }
+  }
+
+  .top-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: xx-large;
+    text-align: start;
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    font-size: larger;
+  }
+`;
+
 export default function MainDisplay({
   wineList,
   wine,
@@ -11,27 +62,17 @@ export default function MainDisplay({
   setWine,
   updateWine,
   handleDelete,
+  setWine,
+  setFilteredList
 }) {
-  const StyledDiv = styled.div`
-    background-color: #adb5bd;
-    border: 5px solid black;
-    border-radius: 3%;
-    width: 50%;
-    align-items: center;
-    margin: 40px auto;
-    padding: 20px;
-  `;
-
   let navigate = useNavigate();
   const [editForm, setEditForm] = useState(false);
 
-  // function for form
   const handleClick = (ele) => {
     setWine(ele);
-    setFilteredList(null)
-    setWine(ele)
-    ;
+    setFilteredList(null);
   };
+
   const handleChange = (event) => {
     setEditForm((prevState) => ({
       ...prevState,
@@ -41,30 +82,10 @@ export default function MainDisplay({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     updateWine(editForm, wine._id);
     setEditForm(false);
     navigate("/");
   };
-
-  // const handleDelete = async () =>{
-  //   if(wine){
-  //     const id = wine._id;
-  //     await fetch(URL + "wine/" + id,{
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "Application/json",
-  //       }
-  //     }).catch(err =>console.log(err));
-
-  //     //make api call and set wineLest
-  //     getWine();
-
-  //     //reset wine
-  //     setWine(null);
-  //   };
-
-  // }
 
   const loaded = () => {
     if (editForm) {
@@ -115,7 +136,7 @@ export default function MainDisplay({
               placeholder={wine.image}
             />
             <button type="submit" value="submit">
-              Submit
+              Update Wine
             </button>
           </form>
         </StyledDiv>
@@ -124,31 +145,62 @@ export default function MainDisplay({
     if (wine) {
       return (
         <StyledDiv>
-          <div>{wine.name}</div>
-          <button
-            onClick={() => {
-              setEditForm(wine);
-            }}>
-            Edit
-          </button>
-          <button>Delete</button>
-          <button onClick={() => handleDelete()}>Delete</button>
+          <div className="top-info">
+            {wine.name} - {wine.type}
+            <div> ${wine.price}</div>
+          </div>
+          <div className="info">
+            <img src={wine.image} alt={wine.name} />
+            <div>
+              {wine.year} <br />
+              <br />"{wine.details}"<br />
+              <br />
+              <button
+                onClick={() => {
+                  setEditForm(wine);
+                }}>
+                Edit
+              </button>
+              <button onClick={() => handleDelete()}>Delete</button>
+            </div>
+          </div>
         </StyledDiv>
       );
     }
     if (filteredList) {
       return filteredList.map((ele, idx) => {
         return (
-          <StyledDiv>
-            <div key={idx} onClick={()=>handleClick ()}>{ele.name}</div>
+          <StyledDiv key={idx}>
+            <div className="top-info" onClick={() => handleClick(ele)}>
+              {ele.name} - {ele.type}
+              <div> ${ele.price}</div>
+            </div>
+            <div className="info">
+              <img src={ele.image} alt={ele.name} />
+              <div>
+                {ele.year} <br />
+                <br />"{ele.details}"
+              </div>
+            </div>
           </StyledDiv>
         );
       });
     }
+
     return wineList.map((ele, idx) => {
       return (
-        <StyledDiv>
-          <div key={idx}>{ele.name}</div>
+        <StyledDiv key={idx}>
+            <div className="top-info" onClick={() => handleClick(ele)}>
+            {ele.name} - {ele.type}
+            <div> ${ele.price}</div>
+          </div>
+          <div className="info">
+            <img src={ele.image} alt={ele.name} />
+            <div>
+              {ele.year} <br />
+              <br />"{ele.details}"
+            </div>
+          </div>
         </StyledDiv>
       );
     });
