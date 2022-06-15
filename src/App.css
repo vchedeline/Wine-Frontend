@@ -1,35 +1,22 @@
 * {
-  /* border: 2px solid red; */
-  font-family: 'Dancing Script', cursive;
-  font-family: 'Lobster Two', cursive;
+  font-family: "Dancing Script", cursive;
+  font-family: "Lobster Two", cursive;
   color: white;
 }
+
 .App {
   text-align: center;
-}
-
-.home-icon {
-  width: 50px;
-  height: 5vh;
-  position: absolute;
-  left: 10px;
 }
 
 main {
   margin: 10px;
   height: 70vh;
   display: grid;
-  grid-template-columns: 15% auto;
+  grid-template-columns: 20% auto;
   grid-template-rows: auto auto;
   grid-template-areas:
     "panel display"
     "panel display";
-}
-
-nav {
-  position: relative;
-  height: 8vh;
-  grid-area: nav;
 }
 
 .Panel {
@@ -38,13 +25,6 @@ nav {
 
 .Main-Disp {
   grid-area: display;
-}
-
-.Footer p {
-  width: fit-content;
-  display: flex;
-  display: inline;
-
 }
 
 .link {

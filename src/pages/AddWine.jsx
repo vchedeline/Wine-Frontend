@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Panel from "../components/Panel";
+import Footer from "../components/Footer";
 
 const StyledDiv = styled.div`
   button {
@@ -27,13 +27,15 @@ const StyledDiv = styled.div`
   }
 `;
 
-export default function AddWine({
-  wineList,
-  addWine,
-  setWine,
-  setFilteredList,
-}) {
-  const [newWine, setNewWine] = useState([]);
+export default function AddWine({ addWine }) {
+  const [newWine, setNewWine] = useState({
+    name: "",
+    type: "",
+    year: "",
+    price: "",
+    details: "",
+    image: "https://i.imgur.com/HEbHUUf.png",
+  });
   const navigate = useNavigate();
 
   const handleChange = (evt) => {
@@ -48,12 +50,7 @@ export default function AddWine({
   };
 
   return (
-    <main>
-      <Panel
-        wineList={wineList}
-        setWine={setWine}
-        setFilteredList={setFilteredList}
-      />
+    <>
       <StyledDiv>
         <h1>Enter New Wine</h1>
         <form onSubmit={submitWine}>
@@ -97,11 +94,13 @@ export default function AddWine({
             name="image"
             value={newWine.image}
             onChange={handleChange}
-            placeholder="image"
+            placeholder="https://i.imgur.com/8JnFwOu.png"
           />
           <button type="submit"> Add New Wine </button>
         </form>
+        <button onClick={() => navigate("/")}>Cancel</button>
       </StyledDiv>
-    </main>
+      <Footer />
+    </>
   );
 }

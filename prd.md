@@ -5,15 +5,16 @@
 |-------|--------|
 | Project Name | Vineyard Wine App|
 | Description |Wine Menu and database for all wine connoisseurs |
-| Developers | Chedeline Viljean, Nathan Yi, Omari Archer, Calvin Harris  |
+| Developers | Chedeline Viljean, Nathan Yi, Omari Archer, Calvin Harris |
 | Live Website | https://sasquatch-winos.netlify.app/ |
 | Repo | https://github.com/vchedeline/Wine-Backend,  |
 | Planning | https://miro.com/app/board/uXjVOvArU-k=/ |
 | Technologies | HTML,CSS, JavaScript, REACT, NodeJS, Mongoose, MongoDB, Netlify, Heroku, Imgur, Miro, Styled-Components, Github, Postman. |
 
+
 ## Problem Being Solved and Target Market
 
-For the wine distributor, restaurant owner or even the modest collector the Vineyard App makes selecting your next exquiste Wine easy, choose from a large selection of aged imports guarenteed to revitalize your collection. 
+For the wine distributor, restaurant owner or even the modest collector the Vineyard App makes selecting your next exquiste Wine easy, choose from a large selection of aged imports guarenteed to revitalize your collection.
 
 ## User Stories
 
@@ -25,14 +26,13 @@ For the wine distributor, restaurant owner or even the modest collector the Vine
 
 ## Route Tables
 
-| Endpoint | Method | Response | Other |
-| -------- | ------ | -------- | ----- |
-| /vineyard | GET | Display of all Wine | |
-| /wine | POST | Create new Wine | body must include data for new item |
-| /wine/:id | GET | Get a specific Wine | |
-| /wine/:id | PUT | Update/Change Wine information | body must include updated data |
-| /:wine/:id | DELETE | Delete a wine by id | |
-
+| Endpoint   | Method | Response                       | Other                               |
+| ---------- | ------ | ------------------------------ | ----------------------------------- |
+| /vineyard  | GET    | Display of all Wine            |                                     |
+| /wine      | POST   | Create new Wine                | body must include data for new item |
+| /wine/:id  | GET    | Get a specific Wine            |                                     |
+| /wine/:id  | PUT    | Update/Change Wine information | body must include updated data      |
+| /:wine/:id | DELETE | Delete a wine by id            |                                     |
 
 ## Component Architecture
 
@@ -42,11 +42,10 @@ flowchart LR
   App-->MainDisplay-->Home-->AddWine
   App-->Footer
   MainDisplay-->Panel-->Nav
-  
+
 ```
 
 ## User Interface Mockups
-
 
 ![Web Mockup](https://i.imgur.com/wSE6lYM.png!)
 
@@ -62,7 +61,3 @@ flowchart LR
 ![Live Site](https://i.imgur.com/5tSEC1m.png)
 ![Live Site](https://i.imgur.com/vIKhECh.png)
 
-## Future Enhancements
-1.Adding Authentication
-2.Using Third Party API
-3.Seperate features for customers and admin user.
