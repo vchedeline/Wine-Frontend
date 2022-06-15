@@ -24,11 +24,25 @@ const PanelDiv = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 0;
+    margin-bottom: 0px;
+    cursor: pointer;
+
   }
 
   .wine-list {
     font-size: 20px;
+
+  }
+
+  .wine-list: hover {
+    color: yellowgreen;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .white-wines {
+    margin-top: 0px
+
   }
 `;
 
@@ -37,6 +51,7 @@ const Icons = styled.button`
   text-decoration: none;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 const FullPanel = styled.div`
   display: flex;
@@ -93,14 +108,14 @@ export default function Panel({ wineList, setWine, setFilteredList, getWine }) {
     return (
       <FullPanel>
         <div>
-          <h1 onClick={() => handleFilter(whites)}>
+          <h1 onClick={() => handleFilter(whites)} className="white-wines">
             <Link to="/newwine">
-              <Icons>
+              <Icons className="icons">
                 <FiPlusCircle />
               </Icons>
             </Link>
             Whites
-            <Icons>
+            <Icons className="icons">
               <FiHome
                 onClick={() => {
                   setWine(null);
