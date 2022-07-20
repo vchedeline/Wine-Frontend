@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Product Requirements Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Summary**
+| Field | Detail |
+|-------|--------|
+| Project Name | Vineyard Wine App|
+| Description |Wine Menu and database for all wine connoisseurs |
+| Developers | Chedeline Viljean, Nathan Yi, Omari Archer, Calvin Harris |
+| Live Website | https://sasquatch-winos.netlify.app/ |
+| Repo | https://github.com/vchedeline/Wine-Backend |
+| Planning | https://miro.com/app/board/uXjVOvArU-k=/ |
+| Technologies | HTML,CSS, JavaScript, REACT, NodeJS, Mongoose, MongoDB, Netlify, Heroku, Imgur, Miro, Styled-Components, Github, Postman. |
 
-## Available Scripts
+## Problem Being Solved and Target Market
 
-In the project directory, you can run:
+For the wine distributor, restaurant owner or even the modest collector the Vineyard App makes selecting your next exquiste Wine easy, choose from a large selection of aged imports guaranteed to revitalize your collection.
 
-### `npm start`
+## User Stories
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- As a user, I want to add a wine to list
+- As a user, I want to be able to delete a specific wine
+- As a user, I want to click on a wine and see the details
+- As a user, I want to be able to edit and update a specific wine
+- As a user, I want to categorize the wines
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Route Tables
 
-### `npm test`
+| Endpoint   | Method | Response                       | Other                               |
+| ---------- | ------ | ------------------------------ | ----------------------------------- |
+| /vineyard  | GET    | Display of all Wine            |                                     |
+| /wine      | POST   | Create new Wine                | body must include data for new item |
+| /wine/:id  | GET    | Get a specific Wine            |                                     |
+| /wine/:id  | PUT    | Update/Change Wine information | body must include updated data      |
+| /:wine/:id | DELETE | Delete a wine by id            |                                     |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Component Architecture
 
-### `npm run build`
+```mermaid
+flowchart LR
+  App-->Header
+  App-->MainDisplay-->Home-->AddWine
+  App-->Footer
+  MainDisplay-->Panel-->Nav
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## User Interface Mockups
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Web Mockup](https://i.imgur.com/wSE6lYM.png!)
 
-### `npm run eject`
+![Web Mockup](https://i.imgur.com/OLjRw2t.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Web Mockup](https://i.imgur.com/ptZstcA.jpg)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Web Mockup](https://i.imgur.com/7C0ioOL.jpg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Live Site
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Live Site](https://i.imgur.com/l9njYFQ.png)
+![Live Site](https://i.imgur.com/OfeSajv.png)
+![Live Site](https://i.imgur.com/5tSEC1m.png)
+![Live Site](https://i.imgur.com/vIKhECh.png)
