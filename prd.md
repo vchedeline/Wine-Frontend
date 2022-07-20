@@ -14,7 +14,7 @@
 
 ## Problem Being Solved and Target Market
 
-For the wine distributor, restaurant owner or even the modest collector the Vineyard App makes selecting your next exquiste Wine easy, choose from a large selection of aged imports guarenteed to revitalize your collection.
+For the wine distributor, restaurant owner or even the modest collector the Vineyard App makes selecting your next exquiste Wine easy, choose from a large selection of aged imports guaranteed to revitalize your collection.
 
 ## User Stories
 
